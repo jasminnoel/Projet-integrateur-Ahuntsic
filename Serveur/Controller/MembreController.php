@@ -14,7 +14,7 @@
     
 		try{
     $Verification="SELECT * FROM connexion WHERE Usr_Email=?";
-			$unModele=new filmsModele($requette,array($usr_email));
+			$unModele=new filmsModele($Verification,array($usr_email));
 			$stmt=$unModele->executer();
     if($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
     
@@ -32,8 +32,8 @@
     
     
     //Ajout du membre
-			$requete="INSERT INTO utilisateurs VALUES(?,?,0,?,?,?,?)";
-			$unModele=new filmsModele($requete,array($usr_dateN,$usr_email,$usr_nom,$usr_pays,$usr_prenom,$usr_ville));
+			$requete="INSERT INTO utilisateurs VALUES(0,?,?,?,?,?,?)";
+			$unModele=new filmsModele($requete,array($usr_email,$usr_nom,$usr_prenom,$usr_dateN,$usr_ville,$usr_pays));
 			$stmt=$unModele->executer();
 			$tabRes['action']="enregistrer";
 			$tabRes['msg']="Membre bien enregistre";

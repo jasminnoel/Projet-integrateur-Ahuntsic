@@ -14,6 +14,9 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+    <script src="js/MembreRequetes.js"></script>
+    <script src="Serveur/Views/MembreViews.js"></script>
+    
 </head>
 
 <body>
@@ -56,7 +59,7 @@
             </h2>
           </div>
         </div> -->
-
+          <div id="messages"></div>
         <div class="row">
 
           <div id="titre_acceuil" class="col s12 m7">
@@ -104,7 +107,7 @@
                     <!-- Date de naissance -->
                     <div class="row">
                       <div class="input-field col s12">
-                        <input id="usr_dateN" type="text" class="datepicker">
+                        <input id="usr_dateN" name="usr_dateN" type="date">
                         <label for="usr_dateN">Anniversaire</label>
                       </div>
                     </div>
@@ -120,13 +123,13 @@
                       <div class="input-field col s6">
                         <select id="usr_pays" name="usr_pays">
                           <option value="" disabled selected>Votre Pays</option>
-                          <option value="1">Canada</option>
-                          <option value="2">États-Unis</option>
+                          <option value="canada">Canada</option>
+                          <option value="usa">États-Unis</option>
                         </select>
                         <label for="usr_pays">Pays</label>
                       </div>
                     </div>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">
+                    <button class="btn waves-effect waves-light" type="button" onclick="inscrireMembre()" name="action">
                       Créer un compte
                     </button>
                   </form>
