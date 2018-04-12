@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>iPotLock</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+</head>
+
+<body>
+  <main>
+    <nav class="#ffffff white" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo black-text">iPotLock</a>
+
+       <!--  <ul class="right hide-on-med-and-down">
+          <li>
+            <a href="#" class="black-text">Navbar Link</a>
+          </li>
+        </ul> -->
+        <ul id="nav-mobile" class="sidenav">
+          <li>
+            <a href="#" class="black-text">Navbar Link</a>
+          </li>
+        </ul>
+
+        <div id="connexion" style="width: 50%; display: inline-block; float: right; margin-right: 100px;">
+          <form>
+            <input id="usr_email_login" type="" class="" placeholder="Courriel">
+            <input id="usr_password_login" type="" class="" placeholder="Mot de passe">
+            <button type="submit">Connexion</button>
+          </form>
+        </div>
+
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger black-text">
+          <i class="material-icons">menu</i>
+        </a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="section">
+        <!-- <div class="row" style="border: 1px solid yellow;">
+          <div class="col s12 m12">
+            <h2 class="light-blue-text">
+              <i class="material-icons">flash_on</i>
+            </h2>
+          </div>
+        </div> -->
+
+        <div class="row">
+
+          <div id="titre_acceuil" class="col s12 m7">
+            <div class="icon-block">
+              <h3 class="left">Organiser votre événement, C'est simple!</h3>
+            </div>
+          </div>
+
+          <div id="inscription" class="col s12 m5">
+        		<div>
+                <div class="card-content black-text">
+                  <h5>Inscription</h5>
+                  <p>C'est gratuit</p>
+                </div>
+
+                <div class="row">
+                  <form class="col s12">
+                    <!-- Ligne prenom et nom de famille -->
+                    <div class="row">
+                      <!-- Input Prénom -->
+                      <div class="input-field col s6">
+                        <input id="usr_prenom" type="text" class="validate">
+                        <label for="usr_prenom">Prénom</label>
+                      </div>
+                      <!-- Input Nom de famille -->
+                      <div class="input-field col s6">
+                        <input id="usr_nom" type="text" class="validate">
+                        <label for="usr_nom">Nom de famille</label>
+                      </div>
+                    </div>
+                    <!-- Input Adresse courriel -->
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="usr_email" type="email" class="validate">
+                        <label for="usr_email">Adresse courriel</label>
+                      </div>
+                    </div>
+                    <!-- Input mot de passe -->
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="usr_password" type="password" class="validate">
+                        <label for="usr_password">Nouveau mot de passe</label>
+                      </div>
+                    </div>
+                    <!-- Date de naissance -->
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <input id="usr_dateN" type="text" class="datepicker">
+                        <label for="usr_dateN">Anniversaire</label>
+                      </div>
+                    </div>
+
+                    <!-- Ligne ville et pays -->
+                    <div class="row">
+                      <!-- Input Ville -->
+                      <div class="input-field col s6">
+                        <input id="usr_ville" type="text" class="validate">
+                        <label for="usr_ville">Ville</label>
+                      </div>
+                      <!-- Input Pays -->
+                      <div class="input-field col s6">
+                        <select id="usr_pays">
+                          <option value="" disabled selected>Votre Pays</option>
+                          <option value="1">Canada</option>
+                          <option value="2">États-Unis</option>
+                        </select>
+                        <label for="usr_pays">Pays</label>
+                      </div>
+                    </div>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">
+                      Créer un compte
+                    </button>
+                  </form>
+                </div>
+
+            </div>
+          </div><!-- FIN inscription -->
+
+        </div>
+
+      </div>
+
+    </div><!-- FIN container -->
+</main>
+
+
+<footer class="page-footer white">
+  <div class="container">
+    <div class="row">
+      
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container black-text">
+    Made by 
+      <a class="black-text" href="http://materializecss.com">Materialize</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
