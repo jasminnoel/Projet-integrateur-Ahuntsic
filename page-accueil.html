@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -73,31 +73,31 @@
                 </div>
 
                 <div class="row">
-                  <form class="col s12">
+                  <form name="form_membre" id="form_membre" class="col s12">
                     <!-- Ligne prenom et nom de famille -->
                     <div class="row">
                       <!-- Input Prénom -->
                       <div class="input-field col s6">
-                        <input id="usr_prenom" type="text" class="validate">
+                        <input id="usr_prenom" name="usr_prenom" type="text" class="validate">
                         <label for="usr_prenom">Prénom</label>
                       </div>
                       <!-- Input Nom de famille -->
                       <div class="input-field col s6">
-                        <input id="usr_nom" type="text" class="validate">
+                        <input id="usr_nom" name="usr_nom" type="text" class="validate">
                         <label for="usr_nom">Nom de famille</label>
                       </div>
                     </div>
                     <!-- Input Adresse courriel -->
                     <div class="row">
                       <div class="input-field col s12">
-                        <input id="usr_email" type="email" class="validate">
+                        <input id="usr_email" name="usr_email" type="email" class="validate">
                         <label for="usr_email">Adresse courriel</label>
                       </div>
                     </div>
                     <!-- Input mot de passe -->
                     <div class="row">
                       <div class="input-field col s12">
-                        <input id="usr_password" type="password" class="validate">
+                        <input id="usr_password" name="usr_password" type="password" class="validate">
                         <label for="usr_password">Nouveau mot de passe</label>
                       </div>
                     </div>
@@ -113,12 +113,12 @@
                     <div class="row">
                       <!-- Input Ville -->
                       <div class="input-field col s6">
-                        <input id="usr_ville" type="text" class="validate">
+                        <input id="usr_ville" name="usr_ville" type="text" class="validate">
                         <label for="usr_ville">Ville</label>
                       </div>
                       <!-- Input Pays -->
                       <div class="input-field col s6">
-                        <select id="usr_pays">
+                        <select id="usr_pays" name="usr_pays">
                           <option value="" disabled selected>Votre Pays</option>
                           <option value="1">Canada</option>
                           <option value="2">États-Unis</option>
