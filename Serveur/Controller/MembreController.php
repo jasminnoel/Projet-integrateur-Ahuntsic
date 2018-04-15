@@ -10,7 +10,6 @@
 		$username = $_POST["username"];
 		$password = $_POST["password"];
 		try{
-
 			$requete="INSERT INTO membre VALUES(?,?,?,?,?)";
 			$unModele=new filmsModele($requete,array($username,$prenom,$nom,$age,$courriel));
 			$stmt=$unModele->executer();
@@ -23,11 +22,14 @@
 	}
 
 	//******************************************************
-	//Contr?leur
+	//Controleur
 	$action=$_POST['action'];
 	switch($action){
 		case "enregistrer" :
 			enregistrerMembre();
+		break;
+	case "validerConnexion" :
+			validerConnexion();
 		break;
 	}
     echo json_encode($tabRes);
