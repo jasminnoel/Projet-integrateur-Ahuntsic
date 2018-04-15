@@ -45,13 +45,41 @@
 			unset($unModele);
 		}
 	}
+    function validerConnex(){
+	global $tabRes;
+	$usr_email_login = $_POST["usr_email_login"];
+	$usr_password_login = $_POST["usr_password_login"];
+			try{
+    $Verification="SELECT * FROM connexion WHERE Usr_Email=? AND Usr_Password=?";
+			$unModele=new filmsModele($Verification,array($usr_email_login,$usr_password_login));
+			$stmt=$unModele->executer();
+    if($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
+
+    $tabRes['action']="connexOK";
+	$tabRes['msg']="Connexion réussie";
+ 
+    }
+        else {
+            
+	$tabRes['action']="connexBloque";
+	$tabRes['msg']="Mauvais courriel ou mot de passe";
+            
+    }
+		}catch(Exception $e){
+		}finally{
+			unset($unModele);
+		}
+	}
 
 	//******************************************************
-	//Contr?leur
+	//Controleur
 	$action=$_POST['action'];
 	switch($action){
 		case "enregistrer" :
 			enregistrerMembre();
+		break;
+		case "validerConnex" :
+			validerConnex();
 		break;
 	}
     echo json_encode($tabRes);

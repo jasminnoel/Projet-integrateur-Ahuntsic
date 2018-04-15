@@ -37,10 +37,10 @@
         </ul>
 
         <div id="connexion" style="width: 50%; display: inline-block; float: right; margin-right: 100px;">
-          <form>
-            <input id="usr_email_login" type="" class="" placeholder="Courriel">
-            <input id="usr_password_login" type="" class="" placeholder="Mot de passe">
-            <button type="submit">Connexion</button>
+          <form id="form_connex" name="form_connex">
+            <input id="usr_email_login" name="usr_email_login" type="email" class="" placeholder="Courriel">
+            <input id="usr_password_login" name="usr_password_login" type="password" class="" placeholder="Mot de passe">
+            <button type="button" onclick="validerConnex()">Connexion</button>
           </form>
         </div>
 

@@ -5,10 +5,11 @@ var membreVue=function(reponse){
 	switch(action){
 		case "enregistrer" :
 		case "enlever" :
-		case "modifier" :
+        case "modifier":
+        case "connexOK":
+        case "connexBloque":
 			$('#messages').html(reponse.msg);
 			setTimeout(function(){ $('#messages').html(""); }, 5000);
 		break;
-
 	}
 }
