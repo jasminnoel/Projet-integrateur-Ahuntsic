@@ -50,13 +50,16 @@
 	$usr_email_login = $_POST["usr_email_login"];
 	$usr_password_login = $_POST["usr_password_login"];
 			try{
-    $Verification="SELECT * FROM connexion WHERE Usr_Email=? AND Usr_Password=?";
+			$Verification="SELECT connexion.Usr_Email, connexion.Usr_Password, utilisateurs.Usr_ID FROM connexion inner JOIN utilisateurs on connexion.Usr_Email=utilisateurs.Usr_Email WHERE connexion.Usr_Email=? AND connexion.Usr_Password=?";
 			$unModele=new filmsModele($Verification,array($usr_email_login,$usr_password_login));
 			$stmt=$unModele->executer();
     if($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
-
+		
+		
+	session_start();
+	$_SESSION["Usr_ID"] = $ligne->Usr_ID;
     $tabRes['action']="connexOK";
-	$tabRes['msg']="Connexion reussie";
+	$tabRes['msg']=$_SESSION["Usr_ID"];
  
     }
         else {
