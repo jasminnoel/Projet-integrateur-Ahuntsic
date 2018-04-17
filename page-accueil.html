@@ -21,34 +21,25 @@
 
 <body>
   <main>
-    <nav class="#ffffff white" role="navigation">
-      <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo black-text">iPotLock</a>
-
-       <!--  <ul class="right hide-on-med-and-down">
-          <li>
-            <a href="#" class="black-text">Navbar Link</a>
-          </li>
-        </ul> -->
-        <ul id="nav-mobile" class="sidenav">
-          <li>
-            <a href="#" class="black-text">Navbar Link</a>
-          </li>
-        </ul>
-
-        <div id="connexion" style="width: 50%; display: inline-block; float: right; margin-right: 100px;">
-          <form id="form_connex" name="form_connex">
-            <input id="usr_email_login" name="usr_email_login" type="email" class="" placeholder="Courriel">
-            <input id="usr_password_login" name="usr_password_login" type="password" class="" placeholder="Mot de passe">
-            <button type="button" onclick="validerConnex()">Connexion</button>
-          </form>
-        </div>
-
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger black-text">
-          <i class="material-icons">menu</i>
-        </a>
-      </div>
-    </nav>
+      <nav class="#ffffff white" role="navigation">
+          <div class="nav-wrapper">
+              <a id="logo-container" href="#" class="brand-logo black-text">iPotLock</a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+              <ul class="right hide-on-med-and-down">
+                  <li>
+                      <form id="form_connex" name="form_connex">
+                          <div class="input-field col s4 inline">
+                              <input id="usr_email_login" name="usr_email_login" type="email" class="col s4" placeholder="Courriel">
+                          </div>
+                          <div class="input-field col s4 inline">
+                              <input id="usr_password_login" name="usr_password_login" type="password" class="col s4" placeholder="Mot de passe">
+                          </div>
+                      </form>
+                  </li>
+                  <li><button type="button" onclick="validerConnex()" class="btn col s4 inline">Connexion</button></li>
+              </ul>
+          </div>
+      </nav>
 
     <div class="container">
       <div class="section">

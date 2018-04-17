@@ -56,7 +56,7 @@
     if($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
 
     $tabRes['action']="connexOK";
-	$tabRes['msg']="Connexion réussie";
+	$tabRes['msg']="Connexion reussie";
  
     }
         else {
