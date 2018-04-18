@@ -59,6 +59,7 @@
 	session_start();
 	$_SESSION["Usr_ID"] = $ligne->Usr_ID;
     $tabRes['action']="connexOK";
+    $tabRes['useremail']=$ligne->Usr_Email;
 	$tabRes['msg']=$_SESSION["Usr_ID"];
  
     }
