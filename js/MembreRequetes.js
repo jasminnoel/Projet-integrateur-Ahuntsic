@@ -39,3 +39,22 @@ function validerConnex() {
         }
     });
 }
+
+//validation champ membre tous remplis
+function ValidFormMembre() {
+    var usr_prenom = document.getElementById("usr_prenom").value;
+    var usr_nom = document.getElementById("usr_nom").value;
+    var usr_email = document.getElementById("usr_email").value;
+    var usr_password = document.getElementById("usr_password").value;
+    var usr_dateN = document.getElementById("usr_dateN").value;
+    var usr_ville = document.getElementById("usr_ville").value;
+    var usr_pays = document.getElementById("usr_pays").value;
+
+    if (usr_prenom == "" || usr_nom == "" || usr_email == "" || usr_password == "" || usr_dateN == "" || usr_ville == "" || usr_pays == "") {
+        window.alert("Vous devez remplir tous les chants");
+        return false;
+    }
+    else {
+        inscrireMembre();
+    }
+}
