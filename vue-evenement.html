@@ -22,24 +22,11 @@
       <div class="nav-wrapper container">
         <a id="logo-container" href="#" class="brand-logo black-text">iPotLock</a>
 
-       <!--  <ul class="right hide-on-med-and-down">
-          <li>
-            <a href="#" class="black-text">Navbar Link</a>
-          </li>
-        </ul> -->
         <ul id="nav-mobile" class="sidenav">
           <li>
             <a href="#" class="black-text">Navbar Link</a>
           </li>
         </ul>
-
-        <div id="connexion" style="width: 50%; display: inline-block; float: right; margin-right: 100px;">
-          <form>
-            <input id="usr_email_login" type="" class="" placeholder="Courriel">
-            <input id="usr_password_login" type="" class="" placeholder="Mot de passe">
-            <button type="submit">Connexion</button>
-          </form>
-        </div>
 
         <a href="#" data-target="nav-mobile" class="sidenav-trigger black-text">
           <i class="material-icons">menu</i>
@@ -49,136 +36,191 @@
 
     <div class="container">
       <div class="section">
-        <!-- <div class="row" style="border: 1px solid yellow;">
-          <div class="col s12 m12">
-            <h2 class="light-blue-text">
-              <i class="material-icons">flash_on</i>
-            </h2>
-          </div>
-        </div> -->
 
         <div class="row">
 
+          <!-- colone gauche -->
           <div id="col-gauche" class="col s12 m4">
             <!-- Carte - Description de l'événement -->
             <div class="card #fafafa grey lighten-5">
               <div class="card-content black-text">
-                <span class="card-title">Nom de l'evenement</span>
-                <p>Date</p>
-                <p>Heure debut   Heure fin</p>
-                <p>Categorie</p>
-                <p>Meteo Prevue</p>
-                <p>Lieu</p>
-                <pre>
-                </pre>
+                <!-- Nom de l'evenement -->
+                <span id="event_nom" name="event_nom" class="card-title">Nom de l'evenement</span>
+                <!-- Date de l'evenement -->
+                <p id="event_date" name="event_date">Date</p>
+                <!-- Heure de l'evenement -->
+                <p id="event_heure" name="event_heure">Heure debut</p>
+                <!-- Meteo Prevision en lien avec la date et le lieu de l'evenement -->
+                <div>
+                  Meteo Prevue
+                  <pre class="grey">API Meteo
+
+                  </pre>
+                </div>
+                <!-- Lieu de l'evenement - coordonées google map -->
+                <div id="event_lieu" name="event_lieu">
+                  Lieu
+                  <pre class="grey">API Google Map
+
+
+                  </pre>
+                </div>
               </div>
-            </div>
+            </div><!-- FIN Carte - Description de l'événement -->
 
             <!-- Carte - Messagerie -->
             <div class="card #b2dfdb teal lighten-4">
               <div class="card-content black-text">
                 <span class="card-title">Messages</span>
+                <!-- Liste des messages -->
                 <ul class="collection">
+                  <!-- Message d'un invité -->
                   <li class="collection-item avatar">
                     <img src="images/user-labrune.jpg" alt="" class="circle">
-                    <span class="title">5:30 PM</span>
-                    <p>Ton événement c'est de la marde!</p>
-                    <!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> -->
+                    <span id="mess_date" class="title">5:30 PM</span>
+                    <p id="mess_contenu">Ton événement c'est de la marde!</p>
                   </li>
                   <li class="collection-item avatar">
                     <img src="images/user-lablonde.jpg" alt="" class="circle">
-                    <span class="title">10:15 AM</span>
-                    <p>J'ai hate a demain, ca va etre foue</p>
-                    <!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> -->
+                    <span id="mess_date" class="title">10:15 AM</span>
+                    <p id="mess_contenu">J'ai hate a demain, ca va etre foue</p>
                   </li>
                   <li class="collection-item avatar">
                     <img src="images/user-larousse.jpg" alt="" class="circle">
-                    <span class="title">Hier, 9:45 PM</span>
-                    <p>C'est quoi comme picnic... j'apporte quoi</p>
-                    <!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> -->
+                    <span id="mess_date" class="title">Hier, 9:45 PM</span>
+                    <p id="mess_contenu">C'est quoi comme picnic... j'apporte quoi</p>
                   </li>
-                  
                 </ul>
               </div>
-            </div>
-            <!-- <div class="icon-block">
-              <h3 class="left">Organiser votre événement, C'est simple!</h3>
-            </div> -->
-          </div>
+            </div><!-- FIN Carte - Messagerie -->
+          </div><!-- FIN colone gauche -->
 
+          <!-- colone droite -->
           <div id="col-droite" class="col s12 m8">
-        		<div>
-                <div class="card-content black-text">
-                  <h5>Inscription</h5>
-                  <p>C'est gratuit</p>
+            <!-- Liste des invités a l'événement -->
+            <div>
+              <h6>Invités</h6>
+              <ul>
+                <!-- Invité et participant -->
+                <li id="usr_id" name="usr_id" class="inline space-5">
+                  <img id="usr_photo" src="images/user-labrune.jpg" alt="" class="circle icon-invite border-success">
+                </li>
+                <li id="usr_id" name="usr_id" class="inline space-5">
+                  <img id="usr_photo" src="images/user-lablonde.jpg" alt="" class="circle icon-invite border-success">
+                </li>
+                <li id="usr_id" name="usr_id" class="inline space-5">
+                  <img id="usr_photo" src="images/user-larousse.jpg" alt="" class="circle icon-invite border-success">
+                </li>
+                <li id="usr_id" name="usr_id" class="inline space-5">
+                  <img id="usr_photo" src="images/user-labrune.jpg" alt="" class="circle icon-invite border-success">
+                </li>
+                <!-- Juste Invité -->
+                <li id="usr_id" name="usr_id" class="inline space-5">
+                  <img id="usr_photo" src="images/user-lablonde.jpg" alt="" class="circle icon-invite">
+                </li>
+                <li id="usr_id" name="usr_id" class="inline space-5">
+                  <img id="usr_photo" src="images/user-larousse.jpg" alt="" class="circle icon-invite">
+                </li>
+              </ul>
+            </div><!-- FIN Liste des invités -->
+
+            <!-- Liste des contributions -->
+            <div>
+              <div class="divider"></div>
+              <h5>Contributions</h5>
+              <!-- Item -->
+              <div class="section row">
+                <div class="col s12 m6">
+                  <p id="cont_nom" name="cont_nom">Nom de l'item</p>
                 </div>
-
-                <div class="row">
-                  <form class="col s12">
-                    <!-- Ligne prenom et nom de famille -->
-                    <div class="row">
-                      <!-- Input Prénom -->
-                      <div class="input-field col s6">
-                        <input id="usr_prenom" type="text" class="validate">
-                        <label for="usr_prenom">Prénom</label>
-                      </div>
-                      <!-- Input Nom de famille -->
-                      <div class="input-field col s6">
-                        <input id="usr_nom" type="text" class="validate">
-                        <label for="usr_nom">Nom de famille</label>
-                      </div>
-                    </div>
-                    <!-- Input Adresse courriel -->
-                    <div class="row">
-                      <div class="input-field col s12">
-                        <input id="usr_email" type="email" class="validate">
-                        <label for="usr_email">Adresse courriel</label>
-                      </div>
-                    </div>
-                    <!-- Input mot de passe -->
-                    <div class="row">
-                      <div class="input-field col s12">
-                        <input id="usr_password" type="password" class="validate">
-                        <label for="usr_password">Nouveau mot de passe</label>
-                      </div>
-                    </div>
-                    <!-- Date de naissance -->
-                    <div class="row">
-                      <div class="input-field col s12">
-                        <input id="usr_dateN" type="text" class="datepicker">
-                        <label for="usr_dateN">Anniversaire</label>
-                      </div>
-                    </div>
-
-                    <!-- Ligne ville et pays -->
-                    <div class="row">
-                      <!-- Input Ville -->
-                      <div class="input-field col s6">
-                        <input id="usr_ville" type="text" class="validate">
-                        <label for="usr_ville">Ville</label>
-                      </div>
-                      <!-- Input Pays -->
-                      <div class="input-field col s6">
-                        <select id="usr_pays">
-                          <option value="" disabled selected>Votre Pays</option>
-                          <option value="1">Canada</option>
-                          <option value="2">États-Unis</option>
-                        </select>
-                        <label for="usr_pays">Pays</label>
-                      </div>
-                    </div>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">
-                      Créer un compte
-                    </button>
-                  </form>
+                <div class="col s12 m2">
+                  <p id="cont_qte" name="cont_qte">Qte</p>
                 </div>
+                <div class="col s12 m2">
+                  <p id="cont_prix" name="cont_prix">Cout</p>
+                </div>
+                <div class="col s12 m2">
+                  <img id="usr_photo" src="images/user-lablonde.jpg" alt="" class="circle icon-contribution">
+                </div>
+              </div><!-- FIN Item -->
+              <div class="divider"></div>
+              <!-- Item -->
+              <div class="section row">
+                <div class="col s12 m6">
+                  <p id="cont_nom" name="cont_nom">Nom de l'item</p>
+                </div>
+                <div class="col s12 m2">
+                  <p id="cont_qte" name="cont_qte">Qte</p>
+                </div>
+                <div class="col s12 m2">
+                  <p id="cont_prix" name="cont_prix">Cout</p>
+                </div>
+                <div class="col s12 m2">
+                  <img id="usr_photo" src="images/user-labrune.jpg" alt="" class="circle icon-contribution">
+                </div>
+              </div><!-- FIN Item -->
+              <div class="divider"></div>
+              <!-- Item -->
+              <div class="section row">
+                <div class="col s12 m6">
+                  <p id="cont_nom" name="cont_nom">Nom de l'item</p>
+                </div>
+                <div class="col s12 m2">
+                  <p id="cont_qte" name="cont_qte">Qte</p>
+                </div>
+                <div class="col s12 m2">
+                  <p id="cont_prix" name="cont_prix">Cout</p>
+                </div>
+                <div class="col s12 m2">
+                  <img id="usr_photo" src="images/user-larousse.jpg" alt="" class="circle icon-contribution">
+                </div>
+              </div><!-- FIN Item -->
+              <div class="divider"></div>
+              <!-- Item Sans contribuable -->
+              <div class="section row">
+                <div class="col s12 m6">
+                  <p id="cont_nom" name="cont_nom">Nom de l'item</p>
+                </div>
+                <div class="col s12 m2">
+                  <p id="cont_qte" name="cont_qte">Qte</p>
+                </div>
+                <div class="col s12 m2">
+                  <p id="cont_prix" name="cont_prix">Cout</p>
+                </div>
+                <div class="col s12 m2">
+                  <a class="btn-floating btn-large waves-effect waves-light green">
+                    <i class="material-icons">add</i>
+                  </a>
+                </div>
+              </div><!-- FIN Item Sans contribuable  -->
+              <div class="divider"></div>
+              <!-- Item Sans contribuable -->
+              <div class="section row">
+                <div class="col s12 m6">
+                  <p id="cont_nom" name="cont_nom">Nom de l'item</p>
+                </div>
+                <div class="col s12 m2">
+                  <p id="cont_qte" name="cont_qte">Qte</p>
+                </div>
+                <div class="col s12 m2">
+                  <p id="cont_prix" name="cont_prix">Cout</p>
+                </div>
+                <div class="col s12 m2">
+                  <a class="btn-floating btn-large waves-effect waves-light green">
+                    <i class="material-icons">add</i>
+                  </a>
+                </div>
+              </div><!-- FIN Item Sans contribuable  -->
+              <div class="divider"></div>
 
-            </div>
-          </div><!-- FIN inscription -->
 
-        </div>
+            </div><!-- FIN Liste des contributions -->
+            
+          </div><!-- FIN colone droite -->
 
-      </div>
+        </div><!-- FIN row -->
+
+      </div><!-- FIN section -->
 
     </div><!-- FIN container -->
 </main>
