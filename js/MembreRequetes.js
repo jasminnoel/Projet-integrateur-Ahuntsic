@@ -58,3 +58,42 @@ function ValidFormMembre() {
         inscrireMembre();
     }
 }
+
+
+//Creation evenement
+function ValidEvent() {
+    var Event_Nom = document.getElementById("Event_Nom").value;
+    var Event_Lieu = document.getElementById("Event_Lieu").value;
+    var Event_Desc = document.getElementById("Event_Desc").value;
+    var Event_Date_Debut = document.getElementById("Event_Date_Debut").value;
+    var Event_Time = document.getElementById("Event_Time").value;
+
+    if (Event_Nom == "" || Event_Lieu == "" || Event_Desc == "" || Event_Date_Debut == "" || Event_Time == "") {
+        window.alert("Vous devez remplir tous les chants");
+        return false;
+    }
+    else {
+        CreateEvent();
+    }
+}
+
+function CreateEvent() {
+    var formEvent = new FormData(document.getElementById('form_event'));
+    formEvent.append('action', 'enregistrerEvent');
+    $.ajax({
+        type: 'POST',
+        url: '../Serveur/Controller/UserController.php',
+        data: formEvent,
+        dataType: 'text', //text pour le voir en format de string
+        //async : false,
+        //cache : false,
+        contentType: false,
+        processData: false,
+        success: function (reponse) {//alert(reponse);
+            membreVue(reponse);
+        },
+        fail: function (err) {
+
+        }
+    });
+}
