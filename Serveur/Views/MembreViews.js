@@ -138,7 +138,7 @@ function vueUser(reponse) {
     rep += "</form>";
     rep += "                    </div>";
     rep += "                    <div class=\"modal-footer\">";
-    rep += "                        <button class=\"btn waves - effect waves - light\" type=\"button\" onclick=\"ValidEvent()\" name=\"action\">Créer</a>";
+    rep += "                        <button class=\"btn waves - effect waves - light modal-close\" type=\"button\" onclick=\"ValidEvent()\" name=\"action\">Créer</a>";
     rep += "                    </div>";
     rep += "                </div>";
 
