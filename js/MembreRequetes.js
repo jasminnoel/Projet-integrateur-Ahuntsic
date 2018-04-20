@@ -90,6 +90,7 @@ function CreateEvent() {
         contentType: false,
         processData: false,
         success: function (reponse) {//alert(reponse);
+	    document.getElementById("form_event").reset();
             membreVue(reponse);
         },
         fail: function (err) {
