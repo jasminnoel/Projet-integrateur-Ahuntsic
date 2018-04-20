@@ -1,5 +1,6 @@
 function vueUser(reponse) {
     var rep = "";
+    rep += "<script src=\"js/global.js\"></script>\n";
     rep += "<div class=\"row\">\n";
     rep += "              <h2>Bienvenue " + reponse.useremail + "!</h2>\n";
     rep += "    </div>\n";
@@ -80,9 +81,25 @@ function vueUser(reponse) {
     rep += "                  </div>\n";
     rep += "              </div><!-- FIN colonne -->\n";
 
-      rep += " <div id=\"modal1\" class=\"\">";
-    rep += "   <div class=\"\">";
-    rep += "       <h4>Creation d'un evenement</h4>";
+
+    rep += "\n";
+    rep += "              <div id=\"col-droite\" class=\"col s12 m4\">\n";
+    rep += "                  <!-- Carte - Créer evenement -->\n";
+    rep += "                  <div class=\"card teal right\">\n";
+    rep += "                      <div class=\"card-content\">\n";
+    rep += "                          <p class=\"flow-text white-text center-align\">Créez votre propre événement!</p>\n";
+    rep += "                      </div>\n";
+    rep += "                      <div class=\"card-action\">\n";
+    rep += "                          <a class=\"btn-floating halfway-fab waves-effect waves-light red btn-large modal-trigger\" href=\"#modal1\"><i class=\"material-icons\">add</i></a>\n";
+    rep += "                      </div>\n";
+    rep += "\n";
+    rep += "                  </div>\n";
+    rep += "              </div>\n";
+    rep += "          </div><!-- FIN row -->\n";
+
+    rep += " <div id=\"modal1\" class=\"modal\">";
+    rep += "   <div class=\"modal-content\">";
+    rep += "       <h4>Création d'un evenement</h4>";
     rep += "       <div class=\"row\">";
     rep += "          <form name=\"form_event\" id=\"form_event\" class=\"col s12\">";
     rep += "               <div class=\"row\">";
@@ -108,37 +125,22 @@ function vueUser(reponse) {
     rep += "    <div class=\"row\">";
     rep += "                        <div class=\"input - field col s12\">";
     rep += "                            <input id=\"Event_Date_Debut\" name=\"Event_Date_Debut\" type=\"date\" class=\"validate\">";
-    rep += "                                <label for=\"Event_Date_Debut\">Date de l'evenement</label>";
+    rep += "                                <label for=\"Event_Date_Debut\">Date de l'évènement</label>";
     rep += "        </div>";
     rep += "                        </div>";
     rep += "                        <!-- Input Heure de l'event -->";
     rep += "    <div class=\"row\">";
     rep += "                            <div class=\"input - field col s12\">";
     rep += "                                <input id=\"Event_Time\" name=\"Event_Time\" type=\"text\" class=\"validate\">";
-    rep += "                                    <label for=\"Event_Time\">Heure de debut</label>";
+    rep += "                                    <label for=\"Event_Time\">Heure de début</label>";
     rep += "        </div>";
     rep += "                            </div>";
     rep += "</form>";
     rep += "                    </div>";
-    rep += "                    <div class=\"\">";
+    rep += "                    <div class=\"modal-footer\">";
     rep += "                        <button class=\"btn waves - effect waves - light\" type=\"button\" onclick=\"ValidEvent()\" name=\"action\">Créer</a>";
     rep += "                    </div>";
     rep += "                </div>";
-
-    rep += "\n";
-    rep += "              <div id=\"col-droite\" class=\"col s12 m4\">\n";
-    rep += "                  <!-- Carte - Créer evenement -->\n";
-    rep += "                  <div class=\"card teal right\">\n";
-    rep += "                      <div class=\"card-content\">\n";
-    rep += "                          <p class=\"flow-text white-text center-align\">Créez votre propre événement!</p>\n";
-    rep += "                      </div>\n";
-    rep += "                      <div class=\"card-action\">\n";
-    rep += "                          <a class=\"btn-floating halfway-fab waves-effect waves-light red btn-large\"><i class=\"material-icons\">add</i></a>\n";
-    rep += "                      </div>\n";
-    rep += "\n";
-    rep += "                  </div>\n";
-    rep += "              </div>\n";
-    rep += "          </div><!-- FIN row -->\n";
 
 
     var repMenu = "";
