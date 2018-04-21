@@ -1,8 +1,10 @@
 function vueUser(reponse) {
+    var listeEvenement = reponse.listeEve;
+    var taille = listeEvenement.length;
     var rep = "";
     rep += "<script src=\"js/global.js\"></script>\n";
     rep += "<div class=\"row\">\n";
-    rep += "              <h2>Bienvenue " + reponse.useremail + "!</h2>\n";
+    rep += "              <h2>Bienvenue " + reponse.prenom + "!</h2>\n";
     rep += "    </div>\n";
     rep += "          <div class=\"row\">\n";
     rep += "\n";
@@ -26,57 +28,38 @@ function vueUser(reponse) {
     rep += "                          </div>\n";
     rep += "                      </div>\n";
     rep += "                  </div>\n";
-    rep += "                  <!-- Carte - Messagerie -->\n";
     rep += "                  <div class=\"row\">\n";
     rep += "                      <h5>Événements à venir</h5>\n";
     rep += "                      <div class=\"collection\">\n";
-    rep += "                          <a class=\"collection-item\" href=\"#\">\n";
-    rep += "                              <span class=\"title\">Camping en Gaspésie</span>\n";
-    rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">group</i>4</span>\n";
-    rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">email</i>4</span>\n";
-    rep += "                              <br /><span>02/05/2018</span>\n";
-    rep += "                          </a>\n";
-    rep += "                          <a class=\"collection-item\" href=\"#\">\n";
-    rep += "                              <span class=\"title\">Camping en Gaspésie</span>\n";
-    rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">group</i>4</span>\n";
-    rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">email</i>4</span>\n";
-    rep += "                              <br /><span>02/05/2018</span>\n";
-    rep += "                          </a>\n";
-    rep += "                          <a class=\"collection-item\" href=\"#\">\n";
-    rep += "                              <span class=\"title\">Camping en Gaspésie</span>\n";
-    rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">group</i>4</span>\n";
-    rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">email</i>4</span>\n";
-    rep += "                              <br /><span>02/05/2018</span>\n";
-    rep += "                          </a>\n";
-    rep += "                          <a class=\"collection-item\" href=\"#\">\n";
-    rep += "                              <span class=\"title\">Camping en Gaspésie</span>\n";
-    rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">group</i>4</span>\n";
-    rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">email</i>4</span>\n";
-    rep += "                              <br /><span>02/05/2018</span>\n";
-    rep += "                          </a>\n";
+    for (var i = 0; i < taille; i++) {
+        var auj = new Date();
+        var dateEv = new Date(listeEvenement[i].Event_Date_Debut)
+        if (dateEv >= auj) {
+        rep += "                          <a class=\"collection-item\" href=\"#\">\n";
+        rep += "                              <span class=\"title\">" + listeEvenement[i].Event_Nom + "</span>\n";
+        rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">group</i>4</span>\n";
+        rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">email</i>4</span>\n";
+        rep += "                              <br /><span>" + listeEvenement[i].Event_Date_Debut + "</span>\n";
+        rep += "                          </a>\n";
+        }
+    }
     rep += "                      </div>\n";
     rep += "                  </div>\n";
     rep += "                  <div class=\"row\">\n";
     rep += "                      <h5>Événements archivés</h5>\n";
     rep += "                      <div class=\"collection\">\n";
-    rep += "                          <a class=\"collection-item\" href=\"#\">\n";
-    rep += "                              <span class=\"title\">Camping en Gaspésie</span>\n";
-    rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">group</i>4</span>\n";
-    rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">email</i>4</span>\n";
-    rep += "                              <br /><span>02/05/2018</span>\n";
-    rep += "                          </a>\n";
-    rep += "                          <a class=\"collection-item\" href=\"#\">\n";
-    rep += "                              <span class=\"title\">Camping en Gaspésie</span>\n";
-    rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">group</i>4</span>\n";
-    rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">email</i>4</span>\n";
-    rep += "                              <br /><span>02/05/2018</span>\n";
-    rep += "                          </a>\n";
-    rep += "                          <a class=\"collection-item\" href=\"#\">\n";
-    rep += "                              <span class=\"title\">Camping en Gaspésie</span>\n";
-    rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">group</i>4</span>\n";
-    rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">email</i>4</span>\n";
-    rep += "                              <br /><span>02/05/2018</span>\n";
-    rep += "                          </a>\n";
+    for (var i = 0; i < taille; i++) {
+        var auj = new Date();
+        var dateEv = new Date(listeEvenement[i].Event_Date_Debut)
+        if (dateEv < auj) {
+            rep += "                          <a class=\"collection-item\" href=\"#\">\n";
+            rep += "                              <span class=\"title\">" + listeEvenement[i].Event_Nom + "</span>\n";
+            rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">group</i>4</span>\n";
+            rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">email</i>4</span>\n";
+            rep += "                              <br /><span>" + listeEvenement[i].Event_Date_Debut + "</span>\n";
+            rep += "                          </a>\n";
+        }
+    }
     rep += "                      </div>\n";
     rep += "                  </div>\n";
     rep += "              </div><!-- FIN colonne -->\n";
