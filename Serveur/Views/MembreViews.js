@@ -134,7 +134,7 @@ function vueUser(reponse) {
    repMenu += "<ul id='dropdown1' class='dropdown-content'>";
    repMenu += " <li><a href=\"#!\">Profil</a></li>";
    repMenu += "  <li class=\"divider\"></li>";
-   repMenu += "  <li><a href=\"#!\">LogOff</a></li>";
+   repMenu += "  <li><a href=\"javascript:logOff();\">LogOff</a></li>";
    repMenu += " </ul>";
 
     $('#container').html(rep);
