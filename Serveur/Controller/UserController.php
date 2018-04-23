@@ -41,6 +41,15 @@
 
 
 
+	function LogOff(){
+		session_start();
+		setcookie ("PHPSESSID", "value", time() - 3600, "/");
+		session_destroy();
+		session_unset(); 
+		session_commit();
+	}
+
+
 
 
 
@@ -52,6 +61,9 @@
 	switch($action){
 		case "enregistrerEvent" :
 			enregistrerEvent();
+		break;
+		case "LogOff" :
+			LogOff();
 		break;
 		
 	}
