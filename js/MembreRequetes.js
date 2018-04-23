@@ -84,7 +84,7 @@ function CreateEvent() {
         type: 'POST',
         url: '../Serveur/Controller/UserController.php',
         data: formEvent,
-        dataType: 'text', //text pour le voir en format de string
+        dataType: 'json', //text pour le voir en format de string
         //async : false,
         //cache : false,
         contentType: false,
@@ -92,6 +92,28 @@ function CreateEvent() {
         success: function (reponse) {//alert(reponse);
 	    document.getElementById("form_event").reset();
             membreVue(reponse);
+        },
+        fail: function (err) {
+
+        }
+    });
+}
+//LogOff du user
+function logOff(){
+	var LogOff = new FormData();
+    LogOff.append('action', 'LogOff');
+    $.ajax({
+        type: 'POST',
+        url: '../Serveur/Controller/UserController.php',
+        data: LogOff,
+        dataType: 'json', //text pour le voir en format de string
+        //async : false,
+        //cache : false,
+        contentType: false,
+        processData: false,
+        success: function (reponse) {//alert(reponse);
+	   window.location.reload();
+         
         },
         fail: function (err) {
 
