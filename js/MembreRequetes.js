@@ -120,3 +120,25 @@ function logOff(){
         }
     });
 }
+//aficher événement
+function affEvenementreq(id) {
+    var formEvent = new FormData();
+    formEvent.append('action', 'affEvenement');
+    formEvent.append('Event_ID', id);
+    $.ajax({
+        type: 'POST',
+        url: '../Serveur/Controller/EvenementController.php',
+        data: formEvent,
+        dataType: 'json', //text pour le voir en format de string
+        //async : false,
+        //cache : false,
+        contentType: false,
+        processData: false,
+        success: function (reponse) {//alert(reponse);
+            evenementVue(reponse);
+        },
+        fail: function (err) {
+
+        }
+    });
+}

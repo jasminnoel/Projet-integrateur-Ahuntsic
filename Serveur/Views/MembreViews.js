@@ -35,7 +35,7 @@ function vueUser(reponse) {
         var auj = new Date();
         var dateEv = new Date(listeEvenement[i].Event_Date_Debut)
         if (dateEv >= auj) {
-        rep += "                          <a class=\"collection-item\" href=\"#\">\n";
+            rep += "                          <a class=\"collection-item\" href=\"javascript:affEvenementreq(" + listeEvenement[i].Event_ID + ")\">\n";
         rep += "                              <span class=\"title\">" + listeEvenement[i].Event_Nom + "</span>\n";
         rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">group</i>4</span>\n";
         rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">email</i>4</span>\n";
