@@ -129,7 +129,13 @@ function vueUser(reponse) {
     var repMenu = "";
     repMenu += "<li><a class=\"waves-effect waves-light btn modal-trigger\" href=\"#modal1\"><i class=\"material-icons right\">add</i>Créer événement</a></li>\n";
     repMenu += "                  <li><a href=\"#\"><i class=\"material-icons teal-text\">event</i></a></li>\n";
-    repMenu += "                  <li><a href=\"#\"><i class=\"material-icons teal-text\">person_pin</i></a></li>\n";
+    repMenu += "                  <li><a class=\"dropdown-button\" data-activates=\"dropdown1\" data-target=\"dropdown1\" href=\"#\"><i class=\"material-icons teal-text\">person_pin</i></a>\n";
+	
+   repMenu += "<ul id='dropdown1' class='dropdown-content'>";
+   repMenu += " <li><a href=\"#!\">Profil</a></li>";
+   repMenu += "  <li class=\"divider\"></li>";
+   repMenu += "  <li><a href=\"#!\">LogOff</a></li>";
+   repMenu += " </ul>";
 
     $('#container').html(rep);
     $('#menu-droite').html(repMenu);
