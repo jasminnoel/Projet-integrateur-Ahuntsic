@@ -1,4 +1,5 @@
 (function ($) {
+(function ($) {
     $(function () {
 
         //initialize all modals           
@@ -10,7 +11,7 @@
         //or by click on trigger
         $('.trigger-modal').modal();
 		
-	
+	$('select').formSelect();
 
 		$(".dropdown-button").dropdown({
 			belowOrigin:true,
