@@ -9,7 +9,13 @@
 
         //or by click on trigger
         $('.trigger-modal').modal();
+		
+	
 
-		$(".dropdown-button").dropdown();
+		$(".dropdown-button").dropdown({
+			belowOrigin:true,
+			inDuration:300,
+			outDuration:225
+		});
     }); // end of document ready
 })(jQuery); // end of jQuery name space
