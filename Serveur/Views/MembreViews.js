@@ -73,7 +73,7 @@ function vueUser(reponse) {
     rep += "                          <p class=\"flow-text white-text center-align\">Créez votre propre événement!</p>\n";
     rep += "                      </div>\n";
     rep += "                      <div class=\"card-action\">\n";
-    rep += "                          <a class=\"btn-floating halfway-fab waves-effect waves-light red btn-large modal-trigger\" href=\"#modal1\"><i class=\"material-icons\">add</i></a>\n";
+    rep += "                          <a class=\"btn-floating halfway-fab waves-effect waves-light red btn-large modal-trigger\" data-beloworigin=\"true\" href=\"#modal1\"><i class=\"material-icons\">add</i></a>\n";
     rep += "                      </div>\n";
     rep += "\n";
     rep += "                  </div>\n";
@@ -124,7 +124,55 @@ function vueUser(reponse) {
     rep += "                        <button class=\"btn waves - effect waves - light modal-close\" type=\"button\" onclick=\"ValidEvent()\" name=\"action\">Créer</a>";
     rep += "                    </div>";
     rep += "                </div>";
+	rep += "</div>";
 
+	
+	rep += " <div id=\"modal2\" class=\"modal\">";
+    rep += "   <div class=\"modal-content\">";
+    rep += "       <h4>Profil user</h4>";
+    rep += "       <div class=\"row\">";
+    rep += "          <form name=\"form_event\" id=\"form_event\" class=\"col s12\">";
+    rep += "               <div class=\"row\">";
+    rep += "                    <!-- Input Description -->";
+    rep += "                <div class=\"input - field col s6\">";
+    rep += "                        <input id=\"Event_Nom\" name=\"Event_Nom\" type=\"text\" class=\"validate\">";
+    rep += "                            <label for=\"Event_Nom\">Nom</label>";
+    rep += "                </div>";
+    rep += "                       <!-- Input lieu -->";
+    rep += "                <div class=\"input - field col s6\">";
+    rep += "                           <input id=\"Event_Lieu\" name=\"Event_Lieu\" type=\"text\" class=\"validate\">";
+    rep += "                               <label for=\"Event_Lieu\">Lieu</label>";
+    rep += "                </div>";
+    rep += "                </div>";
+    rep += "                <!-- Input nom -->";
+    rep += "    <div class=\"row\">";
+    rep += "                    <div class=\"input - field col s12\">";
+    rep += "                        <input id=\"Event_Desc\" name=\"Event_Desc\" type=\"text\" class=\"validate\">";
+    rep += "                            <label for=\"Event_Desc\">Description</label>";
+    rep += "        </div>";
+    rep += "                    </div>";
+    rep += "                    <!-- Input Date de l'evenement -->";
+    rep += "    <div class=\"row\">";
+    rep += "                        <div class=\"input - field col s12\">";
+    rep += "                            <input id=\"Event_Date_Debut\" name=\"Event_Date_Debut\" type=\"date\" class=\"validate\">";
+    rep += "                                <label for=\"Event_Date_Debut\">Date de l'évènement</label>";
+    rep += "        </div>";
+    rep += "                        </div>";
+    rep += "                        <!-- Input Heure de l'event -->";
+    rep += "    <div class=\"row\">";
+    rep += "                            <div class=\"input - field col s12\">";
+    rep += "                                <input id=\"Event_Time\" name=\"Event_Time\" type=\"text\" class=\"validate\">";
+    rep += "                                    <label for=\"Event_Time\">Heure de début</label>";
+    rep += "        </div>";
+    rep += "                            </div>";
+    rep += "</form>";
+    rep += "                    </div>";
+    rep += "                    <div class=\"modal-footer\">";
+    rep += "                        <button class=\"btn waves - effect waves - light modal-close\" type=\"button\" onclick=\"ValidEvent()\" name=\"action\">Créer</a>";
+    rep += "                    </div>";
+    rep += "                </div>";
+	
+	
 
     var repMenu = "";
     repMenu += "<li><a class=\"waves-effect waves-light btn modal-trigger\" href=\"#modal1\"><i class=\"material-icons right\">add</i>Créer événement</a></li>\n";
@@ -132,7 +180,7 @@ function vueUser(reponse) {
     repMenu += "                  <li><a class=\"dropdown-button\" data-activates=\"dropdown1\" data-target=\"dropdown1\" href=\"#\"><i class=\"material-icons teal-text\">person_pin</i></a>\n";
 	
    repMenu += "<ul id='dropdown1' class='dropdown-content'>";
-   repMenu += " <li><a href=\"#!\">Profil</a></li>";
+   repMenu += " <li><a class=\"modal-trigger\" href=\"#modal2\">Profil</a></li>";
    repMenu += "  <li class=\"divider\"></li>";
    repMenu += "  <li><a href=\"javascript:logOff();\">LogOff</a></li>";
    repMenu += " </ul>";
