@@ -63,15 +63,16 @@
 			$Verification="SELECT connexion.Usr_Email, connexion.Usr_Password, utilisateurs.Usr_ID, utilisateurs.Usr_Prenom FROM connexion inner JOIN utilisateurs on connexion.Usr_Email=utilisateurs.Usr_Email WHERE connexion.Usr_Email=? AND connexion.Usr_Password=?";
 			$unModele=new filmsModele($Verification,array($usr_email_login,$usr_password_login));
 			$stmt=$unModele->executer();
-//vérifie le mot de passe de l'utilisateur
+//vÃ©rifie le mot de passe de l'utilisateur
     if($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
 		
 		
 	session_start();
 	$_SESSION["Usr_ID"] = $ligne->Usr_ID;
+	$_SESSION["Usr_Email"] = $ligne->Usr_Email;
     $tabRes['action']="connexOK";
     $tabRes['prenom']=$ligne->Usr_Prenom;
-//collecte les événements en cours de l'utilisateur 
+//collecte les Ã©vÃ©nements en cours de l'utilisateur 
 	$reqEvenements="SELECT * FROM evenements WHERE Usr_ID=?";
 			$unModele=new filmsModele($reqEvenements,array($ligne->Usr_ID));
 			$stmt=$unModele->executer();
