@@ -1,5 +1,4 @@
 (function ($) {
-(function ($) {
     $(function () {
 
         //initialize all modals           
