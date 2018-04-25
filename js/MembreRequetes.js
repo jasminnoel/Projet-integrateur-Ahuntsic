@@ -120,7 +120,7 @@ function logOff(){
         }
     });
 }
-//aficher événement
+//aficher Ã©vÃ©nement
 function affEvenementreq(id) {
     var formEvent = new FormData();
     formEvent.append('action', 'affEvenement');
@@ -136,6 +136,28 @@ function affEvenementreq(id) {
         processData: false,
         success: function (reponse) {//alert(reponse);
             evenementVue(reponse);
+        },
+        fail: function (err) {
+
+        }
+    });
+}
+//Modif profil user
+function ModifProfilUser() {
+    var form_Profil_Modif = new FormData(document.getElementById('form_Profil_Modif'));
+    form_Profil_Modif.append('action', 'ModifProfil');
+    $.ajax({
+        type: 'POST',
+        url: '../Serveur/Controller/UserController.php',
+        data: form_Profil_Modif,
+        dataType: 'json', //text pour le voir en format de string
+        //async : false,
+        //cache : false,
+        contentType: false,
+        processData: false,
+        success: function (reponse) {//alert(reponse);
+            
+            membreVue(reponse);
         },
         fail: function (err) {
 
