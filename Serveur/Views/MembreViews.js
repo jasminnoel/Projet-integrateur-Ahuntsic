@@ -126,11 +126,11 @@ function vueUser(reponse) {
     rep += "                </div>";
 	rep += "</div>";
 	
-	rep += " <div id=\"modal2\" class=\"modal\">";
+rep += " <div id=\"modal2\" class=\"modal\">";
     rep += "   <div class=\"modal-content\">";
     rep += "       <h4>Profil utilisateur</h4>";
     rep += "       <div class=\"row\">";
-    rep += "          <form name=\"form_Profil_Modif\" id=\"form_Profil_Modif\" class=\"col s12\">";
+    rep += "          <form name=\"form_Profil_Modif\" id=\"form_Profil_Modif\" enctype=\"multipart / form - data\" class=\"col s12\">";
     rep += "               <div class=\"row\">";
     rep += "                    <!-- Input Description -->";
     rep += "                <div class=\"input - field col s6\">";
@@ -143,13 +143,13 @@ function vueUser(reponse) {
     rep += "                               <label for=\"Usr_Nom\">Nom</label>";
     rep += "                </div>";
     rep += "                </div>";
-    rep += "                <!-- Input nom -->";
+    rep += "                <!-- Input nom ";
     rep += "    <div class=\"row\">";
     rep += "                    <div class=\"input - field col s12\">";
     rep += "                        <input id=\"Usr_Email\" name=\"Usr_Email\" type=\"Email\" class=\"validate\">";
     rep += "                            <label for=\"Usr_Email\">Courriel</label>";
     rep += "        </div>";
-    rep += "                    </div>";
+    rep += "                    </div>-->";
     rep += "                    <!-- Input Date de l'evenement -->";
     rep += "    <div class=\"row\">";
     rep += "                        <div class=\"input - field col s12\">";
@@ -164,13 +164,13 @@ function vueUser(reponse) {
     rep += "                                    <label for=\"Usr_Ville\">Ville</label>";
     rep += "        </div>";
     rep += "                            </div>";
-		rep += "    <div class=\"row\">";
+	rep += "    <div class=\"row\">";
     rep += "                            <div class=\"input - field col s12\">";
     rep += "                                <input id=\"Usr_Password\" name=\"Usr_Password\" type=\"password\" class=\"validate\">";
     rep += "                                    <label for=\"Usr_Password\">Password</label>";
     rep += "        </div>";
     rep += "                            </div>";
-		rep += "    <div class=\"row\">";
+	rep += "    <div class=\"row\">";
     rep += "                            <div class=\"input - field col s12\">";
 	rep += "					<select id=\"Usr_Pays\" name=\"Usr_Pays\">";
     rep += "                    <option value=\"\" disabled selected>Votre Pays</option>";
@@ -180,15 +180,20 @@ function vueUser(reponse) {
     rep += "                 <label for=\"Usr_Pays\">Pays</label>";
     rep += "               </div>";
     rep += "             </div>";
+    rep += "    <div class=\"row\">";
+    rep += "                            <div class=\"input - field col s12\">";
+    rep += "                                <input id=\"Usr_Photo\" name=\"Usr_Photo\" type=\"file\" class=\"validate\">";
+    rep += "                                    <label for=\"Usr_Photo\">Votre Photo</label>";
+    rep += "        </div>";
+    rep += "                            </div>";
     rep += "</form>";
     rep += "                    </div>";
     rep += "                    <div class=\"modal-footer\">";
-    rep += "                        <button class=\"btn waves - effect waves - light modal-close\" type=\"button\" onclick=\"\" name=\"action\">Modifier</a>";
+    rep += "                        <button class=\"btn waves - effect waves - light modal-close\" type=\"button\" onclick=\"ModifProfilUser()\" name=\"action\">Modifier</a>";
     rep += "                    </div>";
     rep += "                </div>";
 	rep += "</div>";
-	
-	
+    rep += "</div>";
 	
 
     var repMenu = "";
