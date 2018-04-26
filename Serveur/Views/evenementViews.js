@@ -1,5 +1,7 @@
 function affEvenement(reponse) {
     var objEve = reponse.objEve;
+    var listeContri = reponse.listeContri;
+    var taille = listeContri.length;
 
 var rep = "";
 rep += "<div class=\"row\">\n";
@@ -87,36 +89,25 @@ rep += "              <div class=\"divider\"></div>\n";
 rep += "              <h5>Contributions</h5>\n";
 rep += "              <!-- Item -->\n";
 rep += "                    <ul class=\"collection\">\n";
-rep += "                        <li class=\"collection-item valign-wrapper\">\n";
-rep += "                            <span class=\"title col s12 m6\">\n";
-rep += "                                <p id=\"cont_nom\" name=\"cont_nom\">Nom de l'item</p>\n";
-rep += "                            </span>\n";
-rep += "                            <span class=\"col s12 m2\">\n";
-rep += "                                <p id=\"cont_qte\" name=\"cont_qte\">Qte</p>\n";
-rep += "                            </span>\n";
-rep += "                            <span class=\"col s12 m2\">\n";
-rep += "                                <p id=\"cont_prix\" name=\"cont_prix\">Cout</p>\n";
-rep += "                            </span>\n";
-rep += "                            <span class=\"secondary-content col s12 m2\">\n";
-rep += "                                <img id=\"usr_photo\" src=\"images/user-lablonde.jpg\" alt=\"\" class=\"circle icon-contribution\">\n";
-rep += "                            </span>\n";
-rep += "                        </li>\n";
-rep += "                        <li class=\"collection-item valign-wrapper\">\n";
-rep += "                            <span class=\"title col s12 m6\">\n";
-rep += "                                <p id=\"cont_nom\" name=\"cont_nom\">Nom de l'item</p>\n";
-rep += "                            </span>\n";
-rep += "                            <span class=\"col s12 m2\">\n";
-rep += "                                <p id=\"cont_qte\" name=\"cont_qte\">Qte</p>\n";
-rep += "                            </span>\n";
-rep += "                            <span class=\"col s12 m2\">\n";
-rep += "                                <p id=\"cont_prix\" name=\"cont_prix\">Cout</p>\n";
-rep += "                            </span>\n";
-rep += "                            <span class=\"secondary-content col s12 m2\">\n";
-rep += "                                <a class=\"btn-floating icon-contribution waves-effect waves-light teal valign-wrapper\">\n";
-rep += "                                    <i class=\"material-icons\">add</i>\n";
-rep += "                                </a>\n";
-rep += "                               \n";
-rep += "                            </span>\n";
+    for (var i = 0; i < taille; i++) {
+        rep += "                        <li class=\"collection-item valign-wrapper\">\n";
+        rep += "                            <span class=\"title col s12 m6\">\n";
+        rep += "                                <p id=\"cont_nom\" name=\"cont_nom\">" + listeContri[i].Cont_Nom + "</p>\n";
+        rep += "                            </span>\n";
+        rep += "                            <span class=\"col s12 m2\">\n";
+        rep += "                                <p id=\"cont_qte\" name=\"cont_qte\">" + listeContri[i].Cont_Qte + "</p>\n";
+        rep += "                            </span>\n";
+        rep += "                            <span class=\"col s12 m2\">\n";
+        rep += "                                <p id=\"cont_prix\" name=\"cont_prix\">" + listeContri[i].Cont_Prix + "</p>\n";
+        rep += "                            </span>\n";
+        rep += "                            <span class=\"secondary-content col s12 m2\">\n";
+        rep += "                                <img id=\"usr_photo\" src=\"images/user-lablonde.jpg\" alt=\"\" class=\"circle icon-contribution\">\n";
+        rep += "                            </span>\n";
+        rep += "                        </li>\n";
+    }
+
+rep += "                        <li class=\"collection-item valign-wrapper\" id=\"divAddContri\">\n";
+    rep += "                           <a href=\"javascript:addContri()\" class=\"waves-effect waves-light btn\"><i class=\"material-icons right\">add</i>Ajouter</a>\n";
 rep += "                        </li>\n";
 rep += "                    </ul>\n";
 rep += "            </div><!-- FIN Liste des contributions -->  \n";
@@ -136,4 +127,4 @@ var evenementVue = function (reponse) {
             affEvenement(reponse);
             break;
     }
-}// JavaScript source code
+}
