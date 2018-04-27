@@ -17,6 +17,14 @@ try{
     $tabRes['action']="affEvenement";
     $tabRes['objEve']=$ligne;
 
+		$reqEvent="SELECT * FROM contributions WHERE Event_ID=?";
+			$unModele=new filmsModele($reqEvent,array($Event_ID));
+			$stmt=$unModele->executer();
+	$tabRes['listeContri']=array();
+			while($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
+	$tabRes['listeContri'][] = $ligne;		
+			}
+
 		}catch(Exception $e){
 		}finally{
 			unset($unModele);
