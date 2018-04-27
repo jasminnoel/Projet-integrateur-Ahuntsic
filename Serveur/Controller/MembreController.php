@@ -60,7 +60,7 @@
 	$usr_email_login = $_POST["usr_email_login"];
 	$usr_password_login = $_POST["usr_password_login"];
 			try{
-			$Verification="SELECT connexion.Usr_Email, connexion.Usr_Password, utilisateurs.Usr_ID, utilisateurs.Usr_Prenom FROM connexion inner JOIN utilisateurs on connexion.Usr_Email=utilisateurs.Usr_Email WHERE connexion.Usr_Email=? AND connexion.Usr_Password=?";
+			$Verification="SELECT * FROM connexion inner JOIN utilisateurs on connexion.Usr_Email=utilisateurs.Usr_Email WHERE connexion.Usr_Email=? AND connexion.Usr_Password=?";
 			$unModele=new filmsModele($Verification,array($usr_email_login,$usr_password_login));
 			$stmt=$unModele->executer();
 //vérifie le mot de passe de l'utilisateur
@@ -72,6 +72,7 @@
 	$_SESSION["Usr_Email"] = $ligne->Usr_Email;
     $tabRes['action']="connexOK";
     $tabRes['prenom']=$ligne->Usr_Prenom;
+    $tabRes['ProfilUser']=$ligne;
 //collecte les événements en cours de l'utilisateur 
 	$reqEvenements="SELECT * FROM evenements WHERE Usr_ID=?";
 			$unModele=new filmsModele($reqEvenements,array($ligne->Usr_ID));
