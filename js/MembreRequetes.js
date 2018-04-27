@@ -164,3 +164,26 @@ function ModifProfilUser() {
         }
     });
 }
+//Alert - Invitations aux Evenements
+function alertInvitEvent() {
+    var formEvent = new FormData();
+    formEvent.append('action', 'affInvitation');
+    // formInvit.append('Event_ID', id);
+    $.ajax({
+        type: 'POST',
+        url: '../Serveur/Controller/EvenementController.php',
+        data: formInvit,
+        dataType: 'json', //text pour le voir en format de string
+        //async : false,
+        //cache : false,
+        contentType: false,
+        processData: false,
+        success: function (reponse) {//alert(reponse);
+            
+            membreVue(reponse);
+        },
+        fail: function (err) {
+
+        }
+    });
+}

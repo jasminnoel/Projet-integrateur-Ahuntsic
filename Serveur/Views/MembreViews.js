@@ -10,7 +10,7 @@ function vueUser(reponse) {
     rep += "\n";
     rep += "              <div id=\"col-gauche\" class=\"col s12 m8\">\n";
     rep += "                  <!-- Carte - Notification -->\n";
-    rep += "                  <div class=\"row\">\n";
+    rep += "                  <div id=\"alertInvitation\" class=\"row\">\n";
     rep += "                      <div class=\"card grey lighten-3\">\n";
     rep += "                          <div class=\"card-content valign-wrapper\">\n";
     rep += "                              <div class=\"col m1 valign-wrapper hide-on-med-and-down\">\n";
@@ -211,6 +211,32 @@ rep += " <div id=\"modal2\" class=\"modal\">";
     $('#menu-droite').html(repMenu);
 }
 
+function alertInvitation(reponse) {
+    var repInvit = "";
+    repInvit += "                  <!-- Carte - Notification -->\n";
+    repInvit += "                  <div id=\"alertInvitation\" class=\"row\">\n";
+    repInvit += "                      <div class=\"card grey lighten-3\">\n";
+    repInvit += "                          <div class=\"card-content valign-wrapper\">\n";
+    repInvit += "                              <div class=\"col m1 valign-wrapper hide-on-med-and-down\">\n";
+    repInvit += "                                  <i class=\"material-icons grey-text lighten-3\">perm_contact_calendar</i>\n";
+    repInvit += "                              </div>\n";
+    repInvit += "                              <div class=\"col s12 m8\">\n";
+    repInvit += "                                  <span class=\"\">Vous avez " + reponse.nbrInvitation + " nouvelles invitations. Confirmez votre présence dès maintenant!</span>\n";
+    repInvit += "                              </div>\n";
+    repInvit += "                              <div class=\"col s12 m3\">\n";
+    repInvit += "                                  <div class=\"right\">\n";
+    repInvit += "                                      <a class=\"waves-effect waves-light btn teal white-text\">Voir</a>\n";
+    repInvit += "                                      <a class=\"waves-effect waves-light btn-flat\"><i class=\"material-icons\">clear</i></a>\n";
+    repInvit += "                                  </div>\n";
+    repInvit += "                              </div>\n";
+    repInvit += "                          </div>\n";
+    repInvit += "                      </div>\n";
+    repInvit += "                  </div>\n";
+
+
+    $('#alertInvitation').html(repInvit);
+}
+
 var membreVue=function(reponse){
 	var action=reponse.action;
 	switch(action){
@@ -223,6 +249,9 @@ var membreVue=function(reponse){
             break;
         case "connexOK":
             vueUser(reponse);
+            break;
+        case "affInvitation":
+            alertInvitation(reponse);
             break;
 	}
 }
