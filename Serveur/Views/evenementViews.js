@@ -88,7 +88,7 @@ rep += "            <div class=\"row\">\n";
 rep += "              <div class=\"divider\"></div>\n";
 rep += "              <h5>Contributions</h5>\n";
 rep += "              <!-- Item -->\n";
-rep += "                    <ul class=\"collection\">\n";
+rep += "                    <ul id=\"general\" class=\"collection\">\n";
     for (var i = 0; i < taille; i++) {
         rep += "                        <li class=\"collection-item valign-wrapper\">\n";
         rep += "                            <span class=\"title col s12 m6\">\n";
@@ -106,14 +106,33 @@ rep += "                    <ul class=\"collection\">\n";
         rep += "                        </li>\n";
     }
 
-rep += "                        <li class=\"collection-item valign-wrapper\" id=\"divAddContri\">\n";
-    rep += "                           <a href=\"javascript:addContri()\" class=\"waves-effect waves-light btn\"><i class=\"material-icons right\">add</i>Ajouter</a>\n";
+    rep += "                        <li class=\"collection-item valign-wrapper\" id=\"divAddContri\">\n";
+    rep += "                           <a href=\"javascript:addContri(" + objEve.Event_ID + ")\" class=\"waves-effect waves-light btn\"><i class=\"material-icons right\">add</i>Ajouter</a>\n";
 rep += "                        </li>\n";
 rep += "                    </ul>\n";
 rep += "            </div><!-- FIN Liste des contributions -->  \n";
 rep += "          </div><!-- FIN colone droite -->\n";
 rep += "        </div><!-- FIN row -->\n";
 $('#container').html(rep);
+}
+
+function appendContri(reponse) {
+    var rep = "";
+    rep += "                        <li class=\"collection-item valign-wrapper\">\n";
+    rep += "                            <span class=\"title col s12 m6\">\n";
+    rep += "                                <p id=\"cont_nom\" name=\"cont_nom\">" + reponse.nomContri + "</p>\n";
+    rep += "                            </span>\n";
+    rep += "                            <span class=\"col s12 m2\">\n";
+    rep += "                                <p id=\"cont_qte\" name=\"cont_qte\">" + reponse.qteContri + "</p>\n";
+    rep += "                            </span>\n";
+    rep += "                            <span class=\"col s12 m2\">\n";
+    rep += "                                <p id=\"cont_prix\" name=\"cont_prix\">" + reponse.coutContri + "</p>\n";
+    rep += "                            </span>\n";
+    rep += "                            <span class=\"secondary-content col s12 m2\">\n";
+    rep += "                                <img id=\"usr_photo\" src=\"images/user-lablonde.jpg\" alt=\"\" class=\"circle icon-contribution\">\n";
+    rep += "                            </span>\n";
+    rep += "                        </li>\n";
+    $('#divAddContri').before(rep);
 }
 
 var evenementVue = function (reponse) {
@@ -125,6 +144,9 @@ var evenementVue = function (reponse) {
             break;
         case "affEvenement":
             affEvenement(reponse);
+            break;
+        case "addContri":
+            appendContri(reponse);
             break;
     }
 }

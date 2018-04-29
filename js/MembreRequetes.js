@@ -187,3 +187,32 @@ function alertInvitEvent() {
         }
     });
 }
+
+function submitContri() {
+    if (document.getElementById('nomContri').value == "" || document.getElementById('qteContri').value == "" || document.getElementById('coutContri').value == "") {
+        $('#nomContri').toggleClass('validate invalid');
+        $('#qteContri').toggleClass('validate invalid');
+        $('#coutContri').toggleClass('validate invalid');
+        return false;
+    } else {
+    var formEvent = new FormData(document.getElementById('formAddContri'));
+    formEvent.append('action', 'ajouterContri');
+    $.ajax({
+        type: 'POST',
+        url: '../Serveur/Controller/EvenementController.php',
+        data: formEvent,
+        dataType: 'json', //text pour le voir en format de string
+        //async : false,
+        //cache : false,
+        contentType: false,
+        processData: false,
+        success: function (reponse) {//alert(reponse);
+            document.getElementById("formAddContri").reset();
+            evenementVue(reponse);
+        },
+        fail: function (err) {
+
+        }
+        });
+    }
+}

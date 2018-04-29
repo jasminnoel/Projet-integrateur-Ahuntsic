@@ -60,6 +60,29 @@ try{
 		}
 }
 
+function ajouterContri(){
+	global $tabRes;
+	session_start();
+	$Usr_ID = $_SESSION["Usr_ID"];
+	$Event_ID = $_POST["eveID"];
+	$nomContri = $_POST["nomContri"];
+	$qteContri = $_POST["qteContri"];
+	$coutContri = $_POST["coutContri"];
+
+	try{
+					$Query="INSERT INTO contributions VALUES(?,?,?,?,?,?,?)";
+					$unModele=new filmsModele($Query,array($Usr_ID, $Event_ID, 'general', $nomContri,$coutContri, null,$qteContri));
+					$stmt=$unModele->executer();
+					$tabRes['nomContri']=$nomContri;
+					$tabRes['qteContri']=$qteContri;
+					$tabRes['coutContri']=$coutContri;
+					$tabRes['action']="addContri";
+				}catch(Exception $e){
+					}finally{
+						unset($unModele);
+					}
+}
+
 
 		//******************************************************
 	//Controleur
@@ -70,6 +93,9 @@ try{
 		break;
 		case "affInvitation" :
 			affInvitation();
+		break;	
+		case "ajouterContri" :
+			ajouterContri();
 		break;	
 	}
     echo json_encode($tabRes);
