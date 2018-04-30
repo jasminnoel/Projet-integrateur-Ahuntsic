@@ -17,7 +17,7 @@ rep += "                <span id=\"event_nom\" name=\"event_nom\" class=\"card-t
 rep += "                <!-- Date de l'evenement -->\n";
 rep += "                <p id=\"event_date\" name=\"event_date\">" + objEve.Event_Date_Debut + "</p>\n";
 rep += "                <!-- Heure de l'evenement -->\n";
-rep += "                <p id=\"event_heure\" name=\"event_heure\">Heure debut</p>\n";
+rep += "                <p id=\"event_heure\" name=\"event_heure\">Heure debut: "+ objEve.Event_Time +"</p>\n";
 rep += "                <!-- Meteo Prevision en lien avec la date et le lieu de l'evenement -->\n";
 rep += "                <div>\n";
 rep += "                  Meteo Prevue\n";
