@@ -4,6 +4,8 @@ function affEvenement(reponse) {
     var taille = listeContri.length;
     var listeinvit = reponse.listeinvit;
     var tailleinvit = listeinvit.length;
+    var listMessage = reponse.ListMessages;
+    var tailleMessage = listMessage.length;
 
 var rep = "";
 rep += "<div class=\"row\">\n";
@@ -37,21 +39,17 @@ rep += "                <span class=\"card-title\">Messages</span>\n";
 rep += "                <!-- Liste des messages -->\n";
 rep += "                <ul class=\"collection\">\n";
 rep += "                  <!-- Message d'un invité -->\n";
-rep += "                  <li class=\"collection-item avatar\">\n";
-rep += "                    <img src=\"images/user-labrune.jpg\" alt=\"\" class=\"circle\">\n";
-rep += "                    <span id=\"mess_date\" class=\"title\">5:30 PM</span>\n";
-rep += "                    <p id=\"mess_contenu\">Ton événement c'est de la marde!</p>\n";
-rep += "                  </li>\n";
-rep += "                  <li class=\"collection-item avatar\">\n";
-rep += "                    <img src=\"images/user-lablonde.jpg\" alt=\"\" class=\"circle\">\n";
-rep += "                    <span id=\"mess_date\" class=\"title\">10:15 AM</span>\n";
-rep += "                    <p id=\"mess_contenu\">J'ai hate a demain, ca va etre foue</p>\n";
-rep += "                  </li>\n";
-rep += "                  <li class=\"collection-item avatar\">\n";
-rep += "                    <img src=\"images/user-larousse.jpg\" alt=\"\" class=\"circle\">\n";
-rep += "                    <span id=\"mess_date\" class=\"title\">Hier, 9:45 PM</span>\n";
-rep += "                    <p id=\"mess_contenu\">C'est quoi comme picnic... j'apporte quoi</p>\n";
-rep += "                  </li>\n";
+
+                          for(i=0; i<tailleMessage; i++){
+
+                              rep += "                  <li class=\"collection-item avatar\">\n";
+                              rep += "                    <img src=\"images/user-labrune.jpg\" alt=\"\" class=\"circle\">\n";
+                              rep += "                    <span id=\"mess_date\" class=\"title\">"+ listMessage[i].Mess_Date +"</span>\n";
+                              rep += "                    <p id=\"mess_contenu\">"+ listMessage[i].Mess_Contenu +"</p>\n";
+                              rep += "                  </li>\n";
+
+                          }
+
 rep += "                </ul>\n";
 rep += "              </div>\n";
 rep += "            </div><!-- FIN Carte - Messagerie -->\n";
