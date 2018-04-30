@@ -4,8 +4,9 @@
 
 function affEvenement() {
 global $tabRes;
-$Event_ID = $_POST["Event_ID"];
 session_start();
+$Event_ID = $_POST["Event_ID"];
+
 $Usr_ID = $_SESSION["Usr_ID"];
 
 try{
@@ -35,6 +36,17 @@ $reqEvent="SELECT invitations.Invit_Statut,utilisateurs.Usr_Photo,utilisateurs.U
 	$tabRes['listeinvit'][] = $ligne;		
 			
       }
+	
+	//affichage des messages chat
+					$reqEvent="SELECT * FROM messages WHERE Event_ID=?";
+						$unModele=new filmsModele($reqEvent,array($Event_ID));
+						$stmt=$unModele->executer();
+				$tabRes['ListMessages']=array();
+						while($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
+
+				$tabRes['ListMessages'][] = $ligne;
+
+			      }
       
 		}catch(Exception $e){
 		}finally{
