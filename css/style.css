@@ -33,9 +33,11 @@ main {
 }
 
 .border-success {
-	border: 4px solid green;
+	border: 4px solid teal;
 }
-
+.border-warning {
+	border: 4px solid grey;
+}
 .icon-invite {
 	width: 60px;
 	height: 60px;

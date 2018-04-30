@@ -2,6 +2,8 @@ function affEvenement(reponse) {
     var objEve = reponse.objEve;
     var listeContri = reponse.listeContri;
     var taille = listeContri.length;
+    var listeinvit = reponse.listeinvit;
+    var tailleinvit = listeinvit.length;
 
 var rep = "";
 rep += "<div class=\"row\">\n";
@@ -59,27 +61,37 @@ rep += "          <div id=\"col-droite\" class=\"col s12 m8\">\n";
 rep += "            <!-- Liste des invités a l'événement -->\n";
 rep += "            <div>\n";
 rep += "              <h6>Invités</h6>\n";
-rep += "              <ul>\n";
+rep += "              <ul class=\"valign-wrapper\">\n";
 rep += "                <!-- Invité et participant -->\n";
-rep += "                <li id=\"usr_id\" name=\"usr_id\" class=\"inline space-5\">\n";
-rep += "                  <img id=\"usr_photo\" src=\"images/user-labrune.jpg\" alt=\"\" class=\"circle icon-invite border-success\">\n";
-rep += "                </li>\n";
-rep += "                <li id=\"usr_id\" name=\"usr_id\" class=\"inline space-5\">\n";
-rep += "                  <img id=\"usr_photo\" src=\"images/user-lablonde.jpg\" alt=\"\" class=\"circle icon-invite border-success\">\n";
-rep += "                </li>\n";
-rep += "                <li id=\"usr_id\" name=\"usr_id\" class=\"inline space-5\">\n";
-rep += "                  <img id=\"usr_photo\" src=\"images/user-larousse.jpg\" alt=\"\" class=\"circle icon-invite border-success\">\n";
-rep += "                </li>\n";
-rep += "                <li id=\"usr_id\" name=\"usr_id\" class=\"inline space-5\">\n";
-rep += "                  <img id=\"usr_photo\" src=\"images/user-labrune.jpg\" alt=\"\" class=\"circle icon-invite border-success\">\n";
-rep += "                </li>\n";
-rep += "                <!-- Juste Invité -->\n";
-rep += "                <li id=\"usr_id\" name=\"usr_id\" class=\"inline space-5\">\n";
-rep += "                  <img id=\"usr_photo\" src=\"images/user-lablonde.jpg\" alt=\"\" class=\"circle icon-invite\">\n";
-rep += "                </li>\n";
-rep += "                <li id=\"usr_id\" name=\"usr_id\" class=\"inline space-5\">\n";
-rep += "                  <img id=\"usr_photo\" src=\"images/user-larousse.jpg\" alt=\"\" class=\"circle icon-invite\">\n";
-rep += "                </li>\n";
+    for (var i = 0; i < tailleinvit; i++) {
+        if (listeinvit[i].Invit_Statut == "par") {
+            if (listeinvit[i].Usr_Photo != "") {
+
+
+            rep += "                <li id=\"usr_id\" name=\"usr_id\" class=\"inline space-5\">\n";
+            rep += "                  <img id=\"usr_photo\" src=\"userphotos/" + listeinvit[i].Usr_Photo + "\" alt=\"\" class=\"circle icon-invite border-success\">\n";
+            rep += "                </li>\n";
+            } else {
+                rep += "                <li id=\"usr_id\" name=\"usr_id\" class=\"inline space-5\">\n";
+                rep += "                  <div class=\"circle icon-invite border-success valign-wrapper inline center\"><h6>"+listeinvit[i].Usr_Prenom.charAt(0)+"</h6></div>\n";
+                rep += "                </li>\n";
+            }
+        } else {
+            if (listeinvit[i].Usr_Photo != "") {
+
+
+                rep += "                <li id=\"usr_id\" name=\"usr_id\" class=\"inline space-5\">\n";
+                rep += "                  <img id=\"usr_photo\" src=\"userphotos/" + listeinvit[i].Usr_Photo + "\" alt=\"\" class=\"circle icon-invite border-warning\">\n";
+                rep += "                </li>\n";
+            } else {
+                rep += "                <li id=\"usr_id\" name=\"usr_id\" class=\"inline space-5\">\n";
+                rep += "                  <div class=\"circle icon-invite border-warning valign-wrapper inline center\"><h6>" + listeinvit[i].Usr_Prenom.charAt(0) + "</h6></div>\n";
+                rep += "                </li>\n";
+            }
+        }
+
+}
+
 rep += "              </ul>\n";
 rep += "            </div><!-- FIN Liste des invités -->\n";
 rep += "\n";
@@ -95,10 +107,10 @@ rep += "                    <ul id=\"general\" class=\"collection\">\n";
         rep += "                                <p id=\"cont_nom\" name=\"cont_nom\">" + listeContri[i].Cont_Nom + "</p>\n";
         rep += "                            </span>\n";
         rep += "                            <span class=\"col s12 m2\">\n";
-        rep += "                                <p id=\"cont_qte\" name=\"cont_qte\">" + listeContri[i].Cont_Qte + "</p>\n";
+        rep += "                                <p id=\"cont_qte\" name=\"cont_qte\">Qté :" + listeContri[i].Cont_Qte + "</p>\n";
         rep += "                            </span>\n";
         rep += "                            <span class=\"col s12 m2\">\n";
-        rep += "                                <p id=\"cont_prix\" name=\"cont_prix\">" + listeContri[i].Cont_Prix + "</p>\n";
+        rep += "                                <p id=\"cont_prix\" name=\"cont_prix\">Coût : " + listeContri[i].Cont_Prix + "</p>\n";
         rep += "                            </span>\n";
         rep += "                            <span class=\"secondary-content col s12 m2\">\n";
         rep += "                                <img id=\"usr_photo\" src=\"images/user-lablonde.jpg\" alt=\"\" class=\"circle icon-contribution\">\n";

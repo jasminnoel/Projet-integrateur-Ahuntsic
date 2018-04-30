@@ -22,9 +22,20 @@ try{
 			$stmt=$unModele->executer();
 	$tabRes['listeContri']=array();
 			while($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
+      
 	$tabRes['listeContri'][] = $ligne;		
-			}
-
+			
+      }
+$tabRes['listeinvit'] = array();
+$reqEvent="SELECT invitations.Invit_Statut,utilisateurs.Usr_Photo,utilisateurs.Usr_Prenom FROM invitations inner JOIN utilisateurs ON invitations.Usr_ID=utilisateurs.Usr_ID WHERE invitations.Event_ID=?";
+			$unModele=new filmsModele($reqEvent,array($Event_ID));
+			$stmt=$unModele->executer();
+			while($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
+      
+	$tabRes['listeinvit'][] = $ligne;		
+			
+      }
+      
 		}catch(Exception $e){
 		}finally{
 			unset($unModele);
