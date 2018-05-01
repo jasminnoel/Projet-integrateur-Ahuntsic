@@ -38,7 +38,7 @@ $reqEvent="SELECT invitations.Invit_Statut,utilisateurs.Usr_Photo,utilisateurs.U
       }
 	
 	//affichage des messages chat
-					$reqEvent="SELECT * FROM messages WHERE Event_ID=? ORDER BY Mess_Date";
+					$reqEvent="SELECT * FROM messages inner Join utilisateurs ON messages.Usr_ID=utilisateurs.Usr_ID WHERE Event_ID=? ORDER BY Mess_Date";
 						$unModele=new filmsModele($reqEvent,array($Event_ID));
 						$stmt=$unModele->executer();
 				$tabRes['ListMessages']=array();
