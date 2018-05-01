@@ -50,13 +50,7 @@ function ValidFormMembre() {
     var usr_ville = document.getElementById("usr_ville").value;
     var usr_pays = document.getElementById("usr_pays").value;
 
-   var pattern = new RegExp("([01]?[0-9]|2[0-3]):[0-5][0-9]");
-	
-
-    if (Event_Nom == "" || Event_Lieu == "" || Event_Desc == "" || Event_Date_Debut == "" || Event_Time == "" || pattern.test(Event_Time) == false) {
-        window.alert("Vous devez remplir tous les chants");
-        return false;
-    }
+ 
     else {
         inscrireMembre();
     }
@@ -71,7 +65,10 @@ function ValidEvent() {
     var Event_Date_Debut = document.getElementById("Event_Date_Debut").value;
     var Event_Time = document.getElementById("Event_Time").value;
 
-    if (Event_Nom == "" || Event_Lieu == "" || Event_Desc == "" || Event_Date_Debut == "" || Event_Time == "") {
+  var pattern = new RegExp("([01]?[0-9]|2[0-3]):[0-5][0-9]");
+	
+
+    if (Event_Nom == "" || Event_Lieu == "" || Event_Desc == "" || Event_Date_Debut == "" || Event_Time == "" || pattern.test(Event_Time) == false) {
         window.alert("Vous devez remplir tous les chants");
         return false;
     }
