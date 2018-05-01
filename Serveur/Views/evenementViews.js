@@ -43,7 +43,7 @@ rep += "                  <!-- Message d'un invité -->\n";
                           for(i=0; i<tailleMessage; i++){
 
                               rep += "                  <li class=\"collection-item avatar\">\n";
-                              rep += "                    <img src=\"images/user-labrune.jpg\" alt=\"\" class=\"circle\">\n";
+                              rep += "                    <img src=\"userphotos/"+ listMessage[i].Usr_Photo +"\" alt=\"\" class=\"circle\">\n";
                               rep += "                    <span id=\"mess_date\" class=\"title\">"+ listMessage[i].Mess_Date +"</span>\n";
                               rep += "                    <p id=\"mess_contenu\">"+ listMessage[i].Mess_Contenu +"</p>\n";
                               rep += "                  </li>\n";
