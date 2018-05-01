@@ -115,7 +115,7 @@ function vueUser(reponse) {
     rep += "                        <!-- Input Heure de l'event -->";
     rep += "    <div class=\"row\">";
     rep += "                            <div class=\"input - field col s12\">";
-    rep += "                                <input id=\"Event_Time\" name=\"Event_Time\" type=\"text\" class=\"validate\">";
+    rep += "                                <input id=\"Event_Time\" name=\"Event_Time\" type=\"text\" pattern=\"([01]?[0-9]|2[0-3]):[0-5][0-9]\" class=\"validate\">";
     rep += "                                    <label for=\"Event_Time\">Heure de début</label>";
     rep += "        </div>";
     rep += "                            </div>";
