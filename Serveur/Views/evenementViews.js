@@ -50,7 +50,7 @@ rep += "                  <!-- Message d'un invité -->\n";
 
                           }
 rep +="                   <form id=\"form_Message\" name=\"form_Message\">\n";
-rep += "             <a href=\"javascript:AddMessages()\" class=\"waves-effect waves-light btn right\"><i class=\"material-icons right\">add</i></a>";
+rep += "             <a href=\"javascript:AddMessages()\" class=\"waves-effect waves-light btn right\"><i class=\"material-icons\">add</i></a>";
 rep += "             <div class=\"input-field \"><textarea id=\"Mess_Contenu\" name=\"Mess_Contenu\" placeholder=\"Entrez votre text ici\" class=\"materialize-textarea\"></textarea></div>";
 rep +="                   </form>\n";
 rep += "              </div>\n";
