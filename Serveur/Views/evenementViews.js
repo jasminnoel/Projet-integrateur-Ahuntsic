@@ -33,7 +33,7 @@ rep += "                  </pre></div>\n";
 rep += "              </div>\n";
 rep += "            </div><!-- FIN Carte - Description de l'événement -->\n";
 rep += "            <!-- Carte - Messagerie -->\n";
-rep += "            <div class=\"card\">\n";
+rep += "            <div id=\"Message_ID\" class=\"card\">\n";
 rep += "              <div class=\"card-content black-text\">\n";
 rep += "                <span class=\"card-title\">Messages</span>\n";
 rep += "                <!-- Liste des messages -->\n";
