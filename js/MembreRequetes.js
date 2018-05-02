@@ -235,6 +235,7 @@ function AddMessages(){
       success: function (reponse) {//alert(reponse);
 
            document.getElementById("form_Message").reset();
+	   ReloadMessages(reponse);
       },
       fail: function (err) {
 
