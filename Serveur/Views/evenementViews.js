@@ -169,6 +169,40 @@ function selectInvitView(reponse) {
     $('#listeMembres').html(rep);
 
 }
+
+
+function ReloadMessages(reponse){
+  var listMessage = reponse.ListMessages;
+  var tailleMessage = listMessage.length;
+var rep = "";
+  rep += "            <div id=\"Message_ID\" class=\"card\">\n";
+  rep += "              <div class=\"card-content black-text\">\n";
+  rep += "                <span class=\"card-title\">Messages</span>\n";
+  rep += "                <!-- Liste des messages -->\n";
+  rep += "                <ul class=\"collection\">\n";
+  rep += "                  <!-- Message d'un invité -->\n";
+
+                            for(i=0; i<tailleMessage; i++){
+
+                                rep += "                  <li class=\"collection-item avatar\">\n";
+                                rep += "                    <img src=\"userphotos/"+ listMessage[i].Usr_Photo +"\" alt=\"\" class=\"circle\">\n";
+                                rep += "                    <span id=\"mess_date\" class=\"title\">"+ listMessage[i].Mess_Date +"</span>\n";
+                                rep += "                    <p id=\"mess_contenu\">"+ listMessage[i].Mess_Contenu +"</p>\n";
+                                rep += "                  </li>\n";
+
+                            }
+  rep +="                   <form id=\"form_Message\" name=\"form_Message\">\n";
+  rep += "             <a href=\"javascript:AddMessages()\" class=\"waves-effect waves-light btn right\"><i class=\"material-icons\">add</i></a>";
+  rep += "             <div class=\"input-field \"><textarea id=\"Mess_Contenu\" name=\"Mess_Contenu\" placeholder=\"Entrez votre text ici\" class=\"materialize-textarea\"></textarea></div>";
+  rep +="                   </form>\n";
+  rep += "                </ul>\n";
+  rep += "              </div>\n";
+  $('#Message_ID').html(rep);
+}
+
+
+
+
 var evenementVue = function (reponse) {
     var action = reponse.action;
     switch (action) {
