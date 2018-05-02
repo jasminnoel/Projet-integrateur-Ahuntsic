@@ -93,6 +93,9 @@ rep += "                <!-- Invité et participant -->\n";
 }
 
 rep += "              </ul>\n";
+rep += "                <span id=\"btnInvit\" name=\"btnInvit\" class=\"inline right col s-3\">\n";
+rep += "                  <a href=\"javascript:selectInvit(" + objEve.Event_ID + ")\" class=\"waves-effect waves-light btn\"><i class=\"material-icons right\">group_add</i>Inviter</a>\n";
+rep += "                </span>\n";
 rep += "            </div><!-- FIN Liste des invités -->\n";
 rep += "\n";
 rep += "            <!-- Liste des contributions -->\n";
@@ -146,7 +149,26 @@ function appendContri(reponse) {
     rep += "                        </li>\n";
     $('#divAddContri').before(rep);
 }
+function selectInvitView(reponse) {
+    var listeMembres = reponse.listeMembres;
+    var taille = listeMembres.length;
+    var rep = "";
+    for (var i = 0; i < taille; i++) {
+        rep += "                        <li class=\"collection-item valign-wrapper\">\n";
+        rep += "                            <span class=\"title col s12 m3\">\n";
+        rep += "                                <p id=\"cont_nom\" name=\"cont_nom\">" + listeMembres[i].Usr_Prenom + "</p>\n";
+        rep += "                            </span>\n";
+        rep += "                            <span class=\"col s12 m3\">\n";
+        rep += "                                <p id=\"cont_qte\" name=\"cont_qte\">" + listeMembres[i].Usr_Nom + "</p>\n";
+        rep += "                            </span>\n";
+        rep += "                            <span class=\"secondary-content col s12 m6\">\n";
+        rep += "                                <img id=\"usr_photo\" src=\"userphotos/" + listeMembres[i].Usr_Photo + "\" alt=\"\" class=\"circle icon-contribution right\">\n";
+        rep += "                            </span>\n";
+        rep += "                        </li>\n";
+    }
+    $('#listeMembres').html(rep);
 
+}
 var evenementVue = function (reponse) {
     var action = reponse.action;
     switch (action) {
@@ -159,6 +181,9 @@ var evenementVue = function (reponse) {
             break;
         case "addContri":
             appendContri(reponse);
+            break;
+        case "selectInvit":
+            selectInvitView(reponse);
             break;
     }
 }

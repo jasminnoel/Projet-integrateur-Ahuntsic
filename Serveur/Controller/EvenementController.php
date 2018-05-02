@@ -66,7 +66,7 @@ try{
 			$reqEvent="	SELECT *
 						FROM evenements
 						INNER JOIN Invitations ON evenements.Event_ID = Invitations.Event_ID
-						WHERE Status=i AND Usr_ID=?"; // i: invité, p: participant
+						WHERE Status=i AND Usr_ID=?"; // inv: invité, par: participant
 			$unModele=new filmsModele($reqEvent,array($Usr_ID));
 			$stmt=$unModele->executer();
 			$ligne=$stmt->fetch(PDO::FETCH_OBJ);

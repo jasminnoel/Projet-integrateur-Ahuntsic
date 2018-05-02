@@ -241,3 +241,29 @@ function AddMessages(){
       }
   });
 }
+function selectInvit(id) {
+    var formEvent = new FormData();
+    formEvent.append('action', 'selectInvit');
+    formEvent.append('Event_ID', id);
+    $.ajax({
+        type: 'POST',
+        url: '../Serveur/Controller/invitationController.php',
+        data: formEvent,
+        dataType: 'json', //text pour le voir en format de string
+        //async : false,
+        //cache : false,
+        contentType: false,
+        processData: false,
+        success: function (reponse) {//alert(reponse);
+            evenementVue(reponse);
+		 $(document).ready(function(){
+    $('#modalMembres').modal();
+    $('#modalMembres').modal('open'); 
+ });
+
+        },
+        fail: function (err) {
+
+        }
+    });
+}
