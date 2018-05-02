@@ -234,7 +234,7 @@ function AddMessages(){
       processData: false,
       success: function (reponse) {//alert(reponse);
 
-          //affEvenement();
+           document.getElementById("form_Message").reset();
       },
       fail: function (err) {
 
