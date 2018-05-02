@@ -219,3 +219,25 @@ function submitContri() {
         });
     }
 }
+
+function AddMessages(){
+  var form_Message = new FormData(document.getElementById('form_Message'));
+  form_Message.append('action', 'AjoutMessage');
+  $.ajax({
+      type: 'POST',
+      url: '../Serveur/Controller/EvenementController.php',
+      data: form_Message,
+      dataType: 'json', //text pour le voir en format de string
+      //async : false,
+      //cache : false,
+      contentType: false,
+      processData: false,
+      success: function (reponse) {//alert(reponse);
+
+          //affEvenement();
+      },
+      fail: function (err) {
+
+      }
+  });
+}
