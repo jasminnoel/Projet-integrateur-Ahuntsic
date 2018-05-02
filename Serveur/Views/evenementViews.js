@@ -37,7 +37,7 @@ rep += "            <div id=\"Message_ID\" class=\"card\">\n";
 rep += "              <div class=\"card-content black-text\">\n";
 rep += "                <span class=\"card-title\">Messages</span>\n";
 rep += "                <!-- Liste des messages -->\n";
-rep += "                <ul class=\"collection\">\n";
+rep += "                <ul style=\"overflow-y: scroll;height:300px;\" class=\"collection\">\n";
 rep += "                  <!-- Message d'un invité -->\n";
 
                           for(i=0; i<tailleMessage; i++){
@@ -49,11 +49,11 @@ rep += "                  <!-- Message d'un invité -->\n";
                               rep += "                  </li>\n";
 
                           }
+rep += "              </div>\n";
 rep +="                   <form id=\"form_Message\" name=\"form_Message\">\n";
 rep += "             <a href=\"javascript:AddMessages()\" class=\"waves-effect waves-light btn right\"><i class=\"material-icons\">add</i></a>";
 rep += "             <div class=\"input-field \"><textarea id=\"Mess_Contenu\" name=\"Mess_Contenu\" placeholder=\"Entrez votre text ici\" class=\"materialize-textarea\"></textarea></div>";
 rep +="                   </form>\n";
-rep += "              </div>\n";
 rep += "            </div><!-- FIN Carte - Messagerie -->\n";
 rep += "          </div><!-- FIN colone gauche -->\n";
 rep += "          <!-- colone droite -->\n";
