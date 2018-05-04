@@ -94,7 +94,35 @@
 		}
 	}
 
-	//******************************************************
+function retourmembres(){
+	global $tabRes;
+	session_start();
+	$Usr_Email = $_SESSION["Usr_Email"];
+				$Verification="SELECT * FROM connexion inner JOIN utilisateurs on connexion.Usr_Email=utilisateurs.Usr_Email WHERE connexion.Usr_Email=?";
+			$unModele=new filmsModele($Verification,array($Usr_Email));
+			$stmt=$unModele->executer();
+//vérifie le mot de passe de l'utilisateur
+    if($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
+		
+		
+	
+	$_SESSION["Usr_ID"] = $ligne->Usr_ID;
+	
+    $tabRes['action']="connexOK";
+    $tabRes['prenom']=$ligne->Usr_Prenom;
+    $tabRes['ProfilUser']=$ligne;
+//collecte les événements en cours de l'utilisateur 
+	$reqEvenements="SELECT * FROM evenements WHERE Usr_ID=?";
+			$unModele=new filmsModele($reqEvenements,array($ligne->Usr_ID));
+			$stmt=$unModele->executer();
+			$tabRes['listeEve']=array();
+			 while($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
+			    $tabRes['listeEve'][]=$ligne;
+			}
+    }
+	}
+
+//******************************************************
 	//Controleur
 	$action=$_POST['action'];
 	switch($action){
@@ -103,6 +131,9 @@
 		break;
 		case "validerConnex" :
 			validerConnex();
+		break;
+		case "retourmembre" :
+			retourmembres();
 		break;
 	}
     echo json_encode($tabRes);
