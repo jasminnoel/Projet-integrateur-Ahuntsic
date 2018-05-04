@@ -268,3 +268,24 @@ function selectInvit(id) {
         }
     });
 }
+//function retour evenemtn vers page membre
+function RetourMembre() {
+    var retourmembre = new FormData();
+    retourmembre.append('action', 'retourmembre');//alert(form_membre.get("usr_dateN"));
+    $.ajax({
+        type: 'POST',
+        url: '../Serveur/Controller/MembreController.php',
+        data: retourmembre,
+        dataType: 'json', //text pour le voir en format de string
+        //async : false,
+        //cache : false,
+        contentType: false,
+        processData: false,
+        success: function (reponse) {//alert(reponse);
+            membreVue(reponse);
+        },
+        fail: function (err) {
+
+        }
+    });
+}
