@@ -128,7 +128,15 @@ rep += "                    </ul>\n";
 rep += "            </div><!-- FIN Liste des contributions -->  \n";
 rep += "          </div><!-- FIN colone droite -->\n";
 rep += "        </div><!-- FIN row -->\n";
-$('#container').html(rep);
+    
+    
+ var repMenu = "";
+    repMenu += "                  <li><a href=\"#\"><i class=\"material-icons teal-text\">event</i></a></li>\n";
+    repMenu += "                  <li><a class=\"button\" href=\"javascript:logOff();\"><i class=\"material-icons teal-text\">exit_to_app</i></a>\n";
+
+
+    $('#container').html(rep);
+    $('#menu-droite').html(repMenu);
 }
 
 function appendContri(reponse) {
