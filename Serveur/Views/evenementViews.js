@@ -132,6 +132,7 @@ rep += "        </div><!-- FIN row -->\n";
     
  var repMenu = "";
     repMenu += "                  <li><a href=\"#\"><i class=\"material-icons teal-text\">event</i></a></li>\n";
+     repMenu += "                  <li><a class=\"button\" href=\"javascript:RetourMembre();\"><i class=\"material-icons teal-text\">event_note</i></a>\n";
     repMenu += "                  <li><a class=\"button\" href=\"javascript:logOff();\"><i class=\"material-icons teal-text\">exit_to_app</i></a>\n";
 
 
