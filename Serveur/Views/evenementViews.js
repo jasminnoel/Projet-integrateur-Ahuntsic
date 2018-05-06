@@ -59,9 +59,9 @@ rep += "          </div><!-- FIN colone gauche -->\n";
 rep += "          <!-- colone droite -->\n";
 rep += "          <div id=\"col-droite\" class=\"col s12 m8\">\n";
 rep += "            <!-- Liste des invités a l'événement -->\n";
-rep += "            <div>\n";
-rep += "              <h6>Invités</h6>\n";
-rep += "              <ul class=\"valign-wrapper\">\n";
+rep += "            <div class=\"row\">\n";
+rep += "              <h5>Invités</h5>\n";
+rep += "              <ul id=\"divInvit\" class=\"col s-9 valign-wrapper\">\n";
 rep += "                <!-- Invité et participant -->\n";
     for (var i = 0; i < tailleinvit; i++) {
         if (listeinvit[i].Invit_Statut == "par") {
@@ -161,18 +161,26 @@ function appendContri(reponse) {
 function selectInvitView(reponse) {
     var listeMembres = reponse.listeMembres;
     var taille = listeMembres.length;
+    var listeinvites = reponse.listeinvites;
+    var tailleInvit = listeinvites.length;
     var rep = "";
     for (var i = 0; i < taille; i++) {
-        rep += "                        <li class=\"collection-item valign-wrapper\">\n";
-        rep += "                            <span class=\"title col s12 m3\">\n";
-        rep += "                                <p id=\"cont_nom\" name=\"cont_nom\">" + listeMembres[i].Usr_Prenom + "</p>\n";
-        rep += "                            </span>\n";
-        rep += "                            <span class=\"col s12 m3\">\n";
-        rep += "                                <p id=\"cont_qte\" name=\"cont_qte\">" + listeMembres[i].Usr_Nom + "</p>\n";
-        rep += "                            </span>\n";
-        rep += "                            <span class=\"secondary-content col s12 m6\">\n";
+        rep += "                        <li class=\"collection-item avatar valign-wrapper\">\n";
         rep += "                                <img id=\"usr_photo\" src=\"userphotos/" + listeMembres[i].Usr_Photo + "\" alt=\"\" class=\"circle icon-contribution right\">\n";
+        rep += "                            <span class=\"title\">\n";
+        rep += "                                <p id=\"cont_nom\" name=\"cont_nom\">" + listeMembres[i].Usr_Prenom + " " + listeMembres[i].Usr_Nom + "</p>\n";
         rep += "                            </span>\n";
+        rep += "                  <a id=\"btn" + listeMembres[i].Usr_ID +"\" href=\"javascript:sendInvit(" + reponse.Event_ID + "," + listeMembres[i].Usr_ID + ")\" class=\"secondary-content waves-effect waves-light btn\"><i class=\"material-icons\">person_add</i></a>\n";
+        rep += "                  <i id=\"icon" + listeMembres[i].Usr_ID +"\" class=\"material-icons secondary-content teal-text hidden\">check_circle</i></a>\n";
+        rep += "                        </li>\n";
+    }
+    for (var i = 0; i < tailleInvit; i++) {
+        rep += "                        <li class=\"collection-item avatar valign-wrapper\">\n";
+        rep += "                                <img id=\"usr_photo\" src=\"userphotos/" + listeinvites[i].Usr_Photo + "\" alt=\"\" class=\"circle icon-contribution right\">\n";
+        rep += "                            <span class=\"title\">\n";
+        rep += "                                <p id=\"cont_nom\" name=\"cont_nom\">" + listeinvites[i].Usr_Prenom + " " + listeinvites[i].Usr_Nom + "</p>\n";
+        rep += "                            </span>\n";
+        rep += "                  <i class=\"material-icons secondary-content teal-text\">check_circle</i></a>\n";
         rep += "                        </li>\n";
     }
     $('#listeMembres').html(rep);
@@ -207,6 +215,29 @@ rep += "             <div class=\"input-field \"><textarea id=\"Mess_Contenu\" n
 rep +="                   </form>\n";
   $('#Message_ID').html(rep);
 }
+function sendInvitView(reponse) {
+    var iconID = "icon" + reponse.Usr_ID;
+    var btnID = "btn" + reponse.Usr_ID;
+    var Usr_Photo = reponse.Usr_Photo;
+    var Usr_Prenom = reponse.Usr_Prenom;
+    var rep = "";
+    if (Usr_Photo != "") {
+
+
+        rep += "                <li id=\"usr_id\" name=\"usr_id\" class=\"inline space-5\">\n";
+        rep += "                  <img id=\"usr_photo\" src=\"userphotos/" + Usr_Photo + "\" alt=\"\" class=\"circle icon-invite border-warning\">\n";
+        rep += "                </li>\n";
+    } else {
+        rep += "                <li id=\"usr_id\" name=\"usr_id\" class=\"inline space-5\">\n";
+        rep += "                  <div class=\"circle icon-invite border-warning valign-wrapper inline center\"><h6>" + Usr_Prenom.charAt(0) + "</h6></div>\n";
+        rep += "                </li>\n";
+    }
+    $(document).ready(function () {
+        $('#' + btnID).hide();
+        $('#' + iconID).show();
+        $('#divInvit').append(rep);
+    });
+}
 
 
 
@@ -226,6 +257,9 @@ var evenementVue = function (reponse) {
             break;
         case "selectInvit":
             selectInvitView(reponse);
+            break;
+        case "sendInvit":
+            sendInvitView(reponse);
             break;
     }
 }

@@ -289,3 +289,26 @@ function RetourMembre() {
         }
     });
 }
+//function envoi invitation
+function sendInvit(eve,usr) {
+    var sendInvit = new FormData();
+    sendInvit.append('action', 'sendInvit');//alert(form_membre.get("usr_dateN"));
+    sendInvit.append('Usr_ID', usr);
+    sendInvit.append('Event_ID', eve);
+    $.ajax({
+        type: 'POST',
+        url: '../Serveur/Controller/invitationController.php',
+        data: sendInvit,
+        dataType: 'json', //text pour le voir en format de string
+        //async : false,
+        //cache : false,
+        contentType: false,
+        processData: false,
+        success: function (reponse) {//alert(reponse);
+            evenementVue(reponse);
+        },
+        fail: function (err) {
+
+        }
+    });
+}
