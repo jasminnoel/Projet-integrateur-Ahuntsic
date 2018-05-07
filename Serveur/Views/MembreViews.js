@@ -2,6 +2,12 @@ function vueUser(reponse) {
     var listeEvenement = reponse.listeEve;
     var ProfilUserArray = reponse.ProfilUser;
     var taille = listeEvenement.length;
+    var nbInvit = 0;
+    for (var i = 0; i < taille; i++) {
+        if (listeEvenement[i].Invit_Statut == "inv") {
+            nbInvit++;
+            }
+        }
     var rep = "";
     rep += "<script src=\"js/global.js\"></script>\n";
     rep += "<div class=\"row\">\n";
@@ -11,31 +17,36 @@ function vueUser(reponse) {
     rep += "\n";
     rep += "              <div id=\"col-gauche\" class=\"col s12 m8\">\n";
     rep += "                  <!-- Carte - Notification -->\n";
+    if (nbInvit >0) {
+
     rep += "                  <div id=\"alertInvitation\" class=\"row\">\n";
     rep += "                      <div class=\"card grey lighten-3\">\n";
     rep += "                          <div class=\"card-content valign-wrapper\">\n";
     rep += "                              <div class=\"col m1 valign-wrapper hide-on-med-and-down\">\n";
     rep += "                                  <i class=\"material-icons grey-text lighten-3\">perm_contact_calendar</i>\n";
     rep += "                              </div>\n";
-    rep += "                              <div class=\"col s12 m8\">\n";
-    rep += "                                  <span class=\"\">Vous avez 4 nouvelles invitations. Confirmez votre présence dès maintenant!</span>\n";
+        rep += "                              <div class=\"col s12 m8\">\n";
+        rep += "                                  <span class=\"\">Vous avez " + nbInvit + " nouvelles invitations. Confirmez votre présence dès maintenant!</span>\n";
     rep += "                              </div>\n";
     rep += "                              <div class=\"col s12 m3\">\n";
     rep += "                                  <div class=\"right\">\n";
-    rep += "                                      <a class=\"waves-effect waves-light btn teal white-text\">Voir</a>\n";
-    rep += "                                      <a class=\"waves-effect waves-light btn-flat\"><i class=\"material-icons\">clear</i></a>\n";
+        rep += "                                      <a class=\"waves-effect waves-light btn teal white-text modal-trigger\" href=\"#modalInvit\">Voir</a>\n";
+    rep += "                                      <a id=\"btnCacher\" class=\"waves-effect waves-light btn-flat\"><i class=\"material-icons\">clear</i></a>\n";
     rep += "                                  </div>\n";
     rep += "                              </div>\n";
     rep += "                          </div>\n";
     rep += "                      </div>\n";
-    rep += "                  </div>\n";
+        rep += "                  </div>\n";
+
+    }
     rep += "                  <div class=\"row\">\n";
     rep += "                      <h5>Événements à venir</h5>\n";
-    rep += "                      <div class=\"collection\">\n";
+    rep += "                      <div id=\"listeEvePar\" class=\"collection\">\n";
     for (var i = 0; i < taille; i++) {
+        var statut = listeEvenement[i].Invit_Statut;
         var auj = new Date();
         var dateEv = new Date(listeEvenement[i].Event_Date_Debut)
-        if (dateEv >= auj) {
+        if (dateEv >= auj && statut=="par") {
             rep += "                          <a class=\"collection-item\" href=\"javascript:affEvenementreq(" + listeEvenement[i].Event_ID + ")\">\n";
         rep += "                              <span class=\"title\">" + listeEvenement[i].Event_Nom + "</span>\n";
         rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">group</i>4</span>\n";
@@ -51,8 +62,9 @@ function vueUser(reponse) {
     rep += "                      <div class=\"collection\">\n";
     for (var i = 0; i < taille; i++) {
         var auj = new Date();
-        var dateEv = new Date(listeEvenement[i].Event_Date_Debut)
-        if (dateEv < auj) {
+        var dateEv = new Date(listeEvenement[i].Event_Date_Debut);
+        var statut = listeEvenement[i].Invit_Statut;
+        if (dateEv < auj && statut == "par") {
             rep += "                          <a class=\"collection-item\" href=\"#\">\n";
             rep += "                              <span class=\"title\">" + listeEvenement[i].Event_Nom + "</span>\n";
             rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">group</i>4</span>\n";
@@ -207,36 +219,48 @@ rep += " <div id=\"modal2\" class=\"modal\">";
    repMenu += "  <li class=\"divider\"></li>";
    repMenu += "  <li><a href=\"javascript:logOff();\">LogOff</a></li>";
    repMenu += " </ul>";
+    var repInvit = "";
+    for (var i = 0; i < taille; i++) {
+        var statut = listeEvenement[i].Invit_Statut;
+        if (statut == "inv") {
+            repInvit += "                        <li class=\"collection-item avatar\">\n";
+            repInvit += "                            <span class=\"title\">" + listeEvenement[i].Event_Nom + "</span>\n";
+            repInvit += "                              <p>  Date : " + listeEvenement[i].Event_Date_Debut + "</p>\n";
+            repInvit += "                            <a href=\"javascript:rejoindre(" + listeEvenement[i].Event_ID + ");\" class=\"secondary-content btn\"><i class=\"material-icons right\">check</i>Rejoindre</a>\n";
+            repInvit += "                        </li>\n";
+        }
+    }
 
     $('#container').html(rep);
     $('#menu-droite').html(repMenu);
+    $('#listeInvitModal').html(repInvit);
 }
 
-function alertInvitation(reponse) {
-    var repInvit = "";
-    repInvit += "                  <!-- Carte - Notification -->\n";
-    repInvit += "                  <div id=\"alertInvitation\" class=\"row\">\n";
-    repInvit += "                      <div class=\"card grey lighten-3\">\n";
-    repInvit += "                          <div class=\"card-content valign-wrapper\">\n";
-    repInvit += "                              <div class=\"col m1 valign-wrapper hide-on-med-and-down\">\n";
-    repInvit += "                                  <i class=\"material-icons grey-text lighten-3\">perm_contact_calendar</i>\n";
-    repInvit += "                              </div>\n";
-    repInvit += "                              <div class=\"col s12 m8\">\n";
-    repInvit += "                                  <span class=\"\">Vous avez " + reponse.nbrInvitation + " nouvelles invitations. Confirmez votre présence dès maintenant!</span>\n";
-    repInvit += "                              </div>\n";
-    repInvit += "                              <div class=\"col s12 m3\">\n";
-    repInvit += "                                  <div class=\"right\">\n";
-    repInvit += "                                      <a class=\"waves-effect waves-light btn teal white-text\">Voir</a>\n";
-    repInvit += "                                      <a class=\"waves-effect waves-light btn-flat\"><i class=\"material-icons\">clear</i></a>\n";
-    repInvit += "                                  </div>\n";
-    repInvit += "                              </div>\n";
-    repInvit += "                          </div>\n";
-    repInvit += "                      </div>\n";
-    repInvit += "                  </div>\n";
+/*function alertInvitation(reponse) {
+    var repAlert = "";
+    repAlert += "                  <!-- Carte - Notification -->\n";
+    repAlert += "                  <div id=\"alertInvitation\" class=\"row\">\n";
+    repAlert += "                      <div class=\"card grey lighten-3\">\n";
+    repAlert += "                          <div class=\"card-content valign-wrapper\">\n";
+    repAlert += "                              <div class=\"col m1 valign-wrapper hide-on-med-and-down\">\n";
+    repAlert += "                                  <i class=\"material-icons grey-text lighten-3\">perm_contact_calendar</i>\n";
+    repAlert += "                              </div>\n";
+    repAlert += "                              <div class=\"col s12 m8\">\n";
+    repAlert += "                                  <span class=\"\">Vous avez " + reponse.nbrInvitation + " nouvelles invitations. Confirmez votre présence dès maintenant!</span>\n";
+    repAlert += "                              </div>\n";
+    repAlert += "                              <div class=\"col s12 m3\">\n";
+    repAlert += "                                  <div class=\"right\">\n";
+    repAlert += "                                      <a class=\"waves-effect waves-light btn teal white-text\">Voir</a>\n";
+    repAlert += "                                      <a class=\"waves-effect waves-light btn-flat\"><i class=\"material-icons\">clear</i></a>\n";
+    repAlert += "                                  </div>\n";
+    repAlert += "                              </div>\n";
+    repAlert += "                          </div>\n";
+    repAlert += "                      </div>\n";
+    repAlert += "                  </div>\n";
 
 
     $('#alertInvitation').html(repInvit);
-}
+}*/
 
 var membreVue=function(reponse){
 	var action=reponse.action;

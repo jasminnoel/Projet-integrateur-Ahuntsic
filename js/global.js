@@ -33,3 +33,14 @@ function addContri(eveID) {
         }); // end of document ready
     })(jQuery); // end of jQuery name space
 }
+/*function cacher(id) {
+    var div = id;
+    $(document).ready(function () {
+        $('#' + div).hide();
+    });
+}*/
+$(document).ready(function () {
+    $('#btnCacher').click(function () {
+        $('#alertInvitation').hide();
+    });
+});

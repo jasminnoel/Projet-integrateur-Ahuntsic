@@ -37,8 +37,8 @@
     
     
 						//Ajout du membre
-								$requete="INSERT INTO utilisateurs VALUES(0,?,?,?,?,?,?)";
-								$unModele=new filmsModele($requete,array($usr_email,$usr_nom,$usr_prenom,$usr_dateN,$usr_ville,$usr_pays));
+								$requete="INSERT INTO utilisateurs VALUES(0,?,?,?,?,?,?,?)";
+								$unModele=new filmsModele($requete,array($usr_email,$usr_nom,$usr_prenom,$usr_dateN,$usr_ville,$usr_pays,""));
 								$stmt=$unModele->executer();
 								$tabRes['action']="enregistrer";
 								$tabRes['msg']="Membre bien enregistre";
@@ -74,15 +74,16 @@
     $tabRes['prenom']=$ligne->Usr_Prenom;
     $tabRes['ProfilUser']=$ligne;
 //collecte les événements en cours de l'utilisateur 
-	$reqEvenements="SELECT * FROM evenements WHERE Usr_ID=?";
+	$reqEvenements="SELECT evenements.Event_ID,evenements.Event_Nom,evenements.Event_Date_Debut,invitations.Invit_Statut FROM evenements INNER JOIN invitations ON evenements.Event_ID = invitations.Event_ID WHERE invitations.Usr_ID=?";
 			$unModele=new filmsModele($reqEvenements,array($ligne->Usr_ID));
 			$stmt=$unModele->executer();
 			$tabRes['listeEve']=array();
 			 while($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
 			    $tabRes['listeEve'][]=$ligne;
 			}
-    }
-        else {
+
+
+    } else {
             
 	$tabRes['action']="connexBloque";
 	$tabRes['msg']="Mauvais courriel ou mot de passe";
@@ -112,7 +113,7 @@ function retourmembres(){
     $tabRes['prenom']=$ligne->Usr_Prenom;
     $tabRes['ProfilUser']=$ligne;
 //collecte les événements en cours de l'utilisateur 
-	$reqEvenements="SELECT * FROM evenements WHERE Usr_ID=?";
+	$reqEvenements="SELECT evenements.Event_ID,evenements.Event_Nom,evenements.Event_Date_Debut,invitations.Invit_Statut FROM evenements INNER JOIN invitations ON evenements.Event_ID = invitations.Event_ID WHERE invitations.Usr_ID=?";
 			$unModele=new filmsModele($reqEvenements,array($ligne->Usr_ID));
 			$stmt=$unModele->executer();
 			$tabRes['listeEve']=array();

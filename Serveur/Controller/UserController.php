@@ -114,7 +114,7 @@
 					$stmt=$unModele->executer();
 
 					$tabRes['action']="enregistrer";
-					$tabRes['msg']="Profil bien modifier";
+					$tabRes['msg']="Profil bien modifié";
 
 
 		

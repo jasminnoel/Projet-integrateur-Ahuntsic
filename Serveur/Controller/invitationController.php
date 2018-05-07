@@ -59,6 +59,27 @@ function sendInvit(){
 			unset($unModele);
 		}
 }
+function rejoindreEve(){
+	global $tabRes;
+	$Event_ID = $_POST["Event_ID"];
+	session_start();
+	$Usr_ID= $_SESSION["Usr_ID"];
+		try{
+			$reqInvit="UPDATE invitations SET invitations.Invit_Statut='par' WHERE invitations.Usr_ID=? AND invitations.Event_ID=?";
+			$unModele=new filmsModele($reqInvit,array($Usr_ID, $Event_ID));
+					$stmt=$unModele->executer();
+		$tabRes['action']="rejoindreEve";
+		$reqInvit="SELECT * FROM evenements WHERE evenements.Event_ID=?";
+			$unModele=new filmsModele($reqInvit,array($Usr_ID, $Event_ID));
+					$stmt=$unModele->executer();
+			$ligne=$stmt->fetch(PDO::FETCH_OBJ); 
+			$tabRes['objeve']=$ligne;
+
+		}catch(Exception $e){
+		}finally{
+			unset($unModele);
+		}
+}
 		//******************************************************
 	//Controleur
 	$action=$_POST['action'];
@@ -68,6 +89,9 @@ function sendInvit(){
 		break;
 		case "sendInvit" :
 			sendInvit();
+		break;
+		case "rejoindreEve" :
+			rejoindreEve();
 		break;
 	}
     echo json_encode($tabRes);

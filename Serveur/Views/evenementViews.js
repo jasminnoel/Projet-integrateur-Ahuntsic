@@ -238,6 +238,17 @@ function sendInvitView(reponse) {
         $('#divInvit').append(rep);
     });
 }
+function rejoindreEveView(reponse) {
+    var eve = reponse.objeve;
+    var rep = "";
+    rep += "                          <a class=\"collection-item\" href=\"javascript:affEvenementreq(" + eve.Event_ID + ")\">\n";
+    rep += "                              <span class=\"title\">" + eve.Event_Nom + "</span>\n";
+    rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">group</i>4</span>\n";
+    rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">email</i>4</span>\n";
+    rep += "                              <br /><span>" + eve.Event_Date_Debut + "</span>\n";
+    rep += "                          </a>\n";
+    $('#listeEvePar').append(rep);
+}
 
 
 
@@ -260,6 +271,9 @@ var evenementVue = function (reponse) {
             break;
         case "sendInvit":
             sendInvitView(reponse);
+            break;
+        case "rejoindreEve":
+            rejoindreEveView(reponse);
             break;
     }
 }

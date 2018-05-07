@@ -312,3 +312,25 @@ function sendInvit(eve,usr) {
         }
     });
 }
+//function rejoindre evenement
+function rejoindre(eve) {
+    var rejoindreEve = new FormData();
+    rejoindreEve.append('action', 'rejoindreEve');//alert(form_membre.get("usr_dateN"));
+    rejoindreEve.append('Event_ID', eve);
+    $.ajax({
+        type: 'POST',
+        url: '../Serveur/Controller/invitationController.php',
+        data: rejoindreEve,
+        dataType: 'json', //text pour le voir en format de string
+        //async : false,
+        //cache : false,
+        contentType: false,
+        processData: false,
+        success: function (reponse) {//alert(reponse);
+            evenementVue(reponse);
+        },
+        fail: function (err) {
+
+        }
+    });
+}
