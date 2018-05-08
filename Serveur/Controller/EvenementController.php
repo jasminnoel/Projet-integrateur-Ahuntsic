@@ -18,7 +18,7 @@ try{
     $tabRes['action']="affEvenement";
     $tabRes['objEve']=$ligne;
 
-		$reqEvent="SELECT * FROM contributions WHERE Event_ID=?";
+		$reqEvent="SELECT * FROM contributions inner JOIN utilisateurs ON contributions.Usr_ID=utilisateurs.Usr_ID WHERE Event_ID=?";
 			$unModele=new filmsModele($reqEvent,array($Event_ID));
 			$stmt=$unModele->executer();
 	$tabRes['listeContri']=array();
