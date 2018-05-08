@@ -116,7 +116,7 @@ rep += "                    <ul id=\"general\" class=\"collection\">\n";
         rep += "                                <p id=\"cont_prix\" name=\"cont_prix\">Coût : " + listeContri[i].Cont_Prix + "</p>\n";
         rep += "                            </span>\n";
         rep += "                            <span class=\"secondary-content col s12 m2\">\n";
-        rep += "                                <img id=\"usr_photo\" src=\"images/user-lablonde.jpg\" alt=\"\" class=\"circle icon-contribution\">\n";
+        rep += "                                <img id=\"usr_photo\" src=\"userphotos/"+ listeContri[i].Usr_Photo +"\" alt=\"\" class=\"circle icon-contribution\">\n";
         rep += "                            </span>\n";
         rep += "                        </li>\n";
     }
