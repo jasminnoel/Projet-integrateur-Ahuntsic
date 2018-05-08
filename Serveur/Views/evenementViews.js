@@ -6,7 +6,7 @@ function affEvenement(reponse) {
     var tailleinvit = listeinvit.length;
     var listMessage = reponse.ListMessages;
     var tailleMessage = listMessage.length;
-
+	var objMeteo = reponse.jsonmeteo;
 var rep = "";
 rep += "<div class=\"row\">\n";
 rep += "          <!-- colone gauche -->\n";
@@ -20,10 +20,27 @@ rep += "                <!-- Date de l'evenement -->\n";
 rep += "                <p id=\"event_date\" name=\"event_date\">" + objEve.Event_Date_Debut + "</p>\n";
 rep += "                <!-- Heure de l'evenement -->\n";
 rep += "                <p id=\"event_heure\" name=\"event_heure\">Heure debut: "+ objEve.Event_Time +"</p>\n";
-rep += "                <!-- Meteo Prevision en lien avec la date et le lieu de l'evenement -->\n";
-rep += "                <div>\n";
-rep += "                  Meteo Prevue\n";
-rep += "                  <pre class=\"grey\">API Meteo</pre></div>\n";
+        var auj = new Date();
+		var dateEve = new Date(objEve.Event_Date_Debut);
+		var diff = dateEve.getDate() - auj.getDate();
+if(diff<=5){
+
+	var listePrevisions = objMeteo.list;
+	var taillePrevisions = listePrevisions.length;
+	var dateMeteo;
+	rep += "                <!-- Meteo Prevision en lien avec la date et le lieu de l'evenement -->\n";
+	rep += "                <div>\n";
+	rep += "                  Meteo Prevue le "+dateEve.getDate()+" "+dateEve.getMonth()+" "+dateEve.getFullYear()+"<br>\n";
+		for(i=0; i<taillePrevisions; i++){
+		dateMeteo = new Date(listePrevisions[i].dt);
+		if(dateMeteo.getDate()==dateEve.getDate()){
+	rep += "                  Min : "+listePrevisions[i].main.temp_min+" °C Max : "+listePrevisions[i].main.temp_max+" °C <br>\n";
+	rep += "                   <img src='http://openweathermap.org/img/w/"+listePrevisions[i].weather[0].icon+".png'>\n";
+	break;
+		}
+	}
+	rep += "                  </div>\n";
+	}
 rep += "                <!-- Lieu de l'evenement - coordonées google map -->\n";
 rep += "                <div id=\"event_lieu\" name=\"event_lieu\">\n";
 rep += "                  Lieu\n";

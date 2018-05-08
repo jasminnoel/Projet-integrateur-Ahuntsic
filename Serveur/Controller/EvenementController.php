@@ -52,6 +52,11 @@ $reqEvent="SELECT invitations.Invit_Statut,utilisateurs.Usr_Photo,utilisateurs.U
 		}finally{
 			unset($unModele);
 		}
+			 $api_key = '56f0c8d40a6948c0feba7ed12f04a7ea';
+    $url = 'http://api.openweathermap.org/data/2.5/forecast?id=6077243&units=metric&APPID='.$api_key;
+   $jsonstr = file_get_contents($url);
+   $jsonobj = json_decode($jsonstr);
+   $tabRes['jsonmeteo']=$jsonobj;
 }
 
 
