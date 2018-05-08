@@ -38,7 +38,7 @@ $reqEvent="SELECT invitations.Invit_Statut,utilisateurs.Usr_Photo,utilisateurs.U
       }
 
 	//affichage des messages chat
-					$reqEvent="SELECT * FROM messages inner Join utilisateurs ON messages.Usr_ID=utilisateurs.Usr_ID WHERE Event_ID=? ORDER BY Mess_Date";
+					$reqEvent="SELECT * FROM messages inner Join utilisateurs ON messages.Usr_ID=utilisateurs.Usr_ID WHERE Event_ID=? ORDER BY Mess_Date DESC";
 						$unModele=new filmsModele($reqEvent,array($Event_ID));
 						$stmt=$unModele->executer();
 				$tabRes['ListMessages']=array();
@@ -118,7 +118,7 @@ function Add_Messages_Controller(){
 	$unModele=new filmsModele($Query,array($Usr_ID, $Event_ID,$Mess_Contenu, $Mess_Date));
 	$stmt=$unModele->executer();
 
-	$reqEvent="SELECT * FROM messages inner Join utilisateurs ON messages.Usr_ID=utilisateurs.Usr_ID WHERE Event_ID=? ORDER BY Mess_Date";
+	$reqEvent="SELECT * FROM messages inner Join utilisateurs ON messages.Usr_ID=utilisateurs.Usr_ID WHERE Event_ID=? ORDER BY Mess_Date DESC";
 		$unModele=new filmsModele($reqEvent,array($Event_ID));
 		$stmt=$unModele->executer();
 $tabRes['ListMessages']=array();
