@@ -44,7 +44,7 @@ rep += "                  <!-- Message d'un invité -->\n";
 
                               rep += "                  <li class=\"collection-item avatar\">\n";
                               rep += "                    <img src=\"userphotos/"+ listMessage[i].Usr_Photo +"\" alt=\"\" class=\"circle\">\n";
-                              rep += "                    <span id=\"mess_date\" class=\"title\">"+ listMessage[i].Mess_Date +"</span>\n";
+                                rep += "                    <span id=\"mess_date\" class=\"title\">"+ listMessage[i].Mess_Date + " " + listMessage[i].Usr_Prenom +"</span>\n";
                               rep += "                    <p id=\"mess_contenu\">"+ listMessage[i].Mess_Contenu +"</p>\n";
                               rep += "                  </li>\n";
 
