@@ -7,22 +7,26 @@ function affEvenement(reponse) {
     var listMessage = reponse.ListMessages;
     var tailleMessage = listMessage.length;
 	var objMeteo = reponse.jsonmeteo;
-var rep = "";
+	var rep = "";
+	rep += "<div class=\"row\">\n";
+	rep += "                <!-- Nom de l'evenement -->\n";
+	rep += "                <h1>" + objEve.Event_Nom + "</h1>\n";
+	rep += "                <p class=\"flow-text\">" + objEve.Event_Desc + "</p>\n";
+	rep += "                <div>\n";
 rep += "<div class=\"row\">\n";
 rep += "          <!-- colone gauche -->\n";
-rep += "          <div id=\"col-gauche\" class=\"col s12 m4\">\n";
+rep += "          <div id=\"col-gauche\" class=\"col s12 m5\">\n";
 rep += "            <!-- Carte - Description de l'événement -->\n";
 rep += "            <div class=\"card\">\n";
 rep += "              <div class=\"card-content black-text\">\n";
-rep += "                <!-- Nom de l'evenement -->\n";
-rep += "                <span id=\"event_nom\" name=\"event_nom\" class=\"card-title\">"+objEve.Event_Nom+"</span>\n";
 rep += "                <!-- Date de l'evenement -->\n";
-rep += "                <p id=\"event_date\" name=\"event_date\">" + objEve.Event_Date_Debut + "</p>\n";
+rep += "                <p id=\"event_date\" name=\"event_date\">Date : " + objEve.Event_Date_Debut + "</p>\n";
 rep += "                <!-- Heure de l'evenement -->\n";
-rep += "                <p id=\"event_heure\" name=\"event_heure\">Heure debut: "+ objEve.Event_Time +"</p>\n";
+rep += "                <p id=\"event_heure\" name=\"event_heure\">Heure : "+ objEve.Event_Time +"</p>\n";
         var auj = new Date();
 		var dateEve = new Date(objEve.Event_Date_Debut);
 		var diff = dateEve.getDate() - auj.getDate();
+
 if(diff<=5){
 
 	var listePrevisions = objMeteo.list;
@@ -30,9 +34,10 @@ if(diff<=5){
 	var dateMeteo;
 	rep += "                <!-- Meteo Prevision en lien avec la date et le lieu de l'evenement -->\n";
 	rep += "                <div>\n";
-	rep += "                  Meteo Prevue le "+dateEve.getDate()+" "+dateEve.getMonth()+" "+dateEve.getFullYear()+"<br>\n";
+	rep += "                  <b>Meteo Prevue le</b> " + dateEve.getDate() + "-" + dateEve.getMonth() + "-" + dateEve.getFullYear() + "<br>\n";
+	//window.alert("liste prevision = " + JSON.stringify(listePrevisions));
 		for(i=0; i<taillePrevisions; i++){
-		dateMeteo = new Date(listePrevisions[i].dt);
+		dateMeteo = new Date(listePrevisions[i].dt_txt);
 		if(dateMeteo.getDate()==dateEve.getDate()){
 	rep += "                  Min : "+listePrevisions[i].main.temp_min+" °C Max : "+listePrevisions[i].main.temp_max+" °C <br>\n";
 	rep += "                   <img src='http://openweathermap.org/img/w/"+listePrevisions[i].weather[0].icon+".png'>\n";
@@ -43,9 +48,10 @@ if(diff<=5){
 	}
 rep += "                <!-- Lieu de l'evenement - coordonées google map -->\n";
 rep += "                <div id=\"event_lieu\" name=\"event_lieu\">\n";
-rep += "                  Lieu\n";
-rep += "                  <iframe frameborder=\"0\" style=\"border:0\"";
-rep += "				src=\"https://www.google.com/maps/embed/v1/search?q="+objEve.Event_Lieu+",+QC&key=AIzaSyCVF_aP1ODotWoUN84733j2tLp0JqPVnJM\" allowfullscreen></iframe>\n";
+rep += "                  <h5>Lieu</h5>\n";
+rep += "                  <p>" + objEve.Event_Lieu + "</p>\n";
+rep += "                  <div  class=\"video-container\"><iframe frameborder=\"0\" style=\"border:0\"";
+rep += "				src=\"https://www.google.com/maps/embed/v1/search?q="+objEve.Event_Lieu+",+QC&key=AIzaSyCVF_aP1ODotWoUN84733j2tLp0JqPVnJM\" allowfullscreen></iframe></div>\n";
 rep += "                  </div>\n";
 rep += "              </div>\n";
 rep += "            </div><!-- FIN Carte - Description de l'événement -->\n";
@@ -54,7 +60,7 @@ rep += "            <div id=\"Message_ID\" class=\"card\">\n";
 rep += "              <div class=\"card-content black-text\">\n";
 rep += "                <span class=\"card-title\">Messages</span>\n";
 rep += "                <!-- Liste des messages -->\n";
-rep += "                <ul style=\"overflow-y: scroll;height:300px;\" class=\"collection\">\n";
+rep += "                <ul style=\"overflow-y: scroll;height:350px;\" class=\"collection\">\n";
 rep += "                  <!-- Message d'un invité -->\n";
 
                           for(i=0; i<tailleMessage; i++){
@@ -74,7 +80,7 @@ rep +="                   </form>\n";
 rep += "            </div><!-- FIN Carte - Messagerie -->\n";
 rep += "          </div><!-- FIN colone gauche -->\n";
 rep += "          <!-- colone droite -->\n";
-rep += "          <div id=\"col-droite\" class=\"col s12 m8\">\n";
+rep += "          <div id=\"col-droite\" class=\"col s12 m7\">\n";
 rep += "            <!-- Liste des invités a l'événement -->\n";
 rep += "            <div class=\"row\">\n";
 rep += "              <h5>Invités</h5>\n";

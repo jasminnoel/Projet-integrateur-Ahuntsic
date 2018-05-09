@@ -23,24 +23,24 @@
 
 <body>
     <main>
-        <nav class="#ffffff white container" role="navigation">
-            <div class="nav-wrapper">
-                <a id="logo-container" href="#" class="brand-logo black-text">iPotLock</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down" id="menu-droite">
-                    <li>
-                        <form id="form_connex" name="form_connex">
-                            <div class="input-field col s4 inline">
-                                <input id="usr_email_login" name="usr_email_login" type="email" class="col s4" placeholder="Courriel">
-                            </div>
-                            <div class="input-field col s4 inline">
-                                <input id="usr_password_login" name="usr_password_login" type="password" class="col s4" placeholder="Mot de passe">
-                            </div>
-                        </form>
-                    </li>
-                    <li><button type="button" onclick="validerConnex()" class="btn col s4 inline">Connexion</button></li>
-                </ul>
-            </div>
+        <nav class="white" role="navigation">
+                <div class="nav-wrapper">
+                    <a id="logo-container" href="#" class="brand-logo black-text hide-on-med-and-down">iPotLock</a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul class="right" id="menu-droite">
+                        <li>
+                            <form id="form_connex" name="form_connex">
+                                <div class="input-field col s4 inline">
+                                    <input id="usr_email_login" name="usr_email_login" type="email" class="col s4" placeholder="Courriel">
+                                </div>
+                                <div class="input-field col s4 inline">
+                                    <input id="usr_password_login" name="usr_password_login" type="password" class="col s4" placeholder="Mot de passe">
+                                </div>
+                            </form>
+                        </li>
+                        <li><button type="button" onclick="validerConnex()" class="btn col s4 inline">Connexion</button></li>
+                    </ul>
+                </div>
         </nav>
         <div id="modalMembres" class="modal">
             <div class="modal-content">
@@ -53,7 +53,7 @@
                 <ul id="listeInvitModal" class="collection"></ul>
             </div>
         </div>
-        <div class="container" id="container">
+        <div class="container white" id="container">
             <div class="section">
                 <!-- <div class="row" style="border: 1px solid yellow;">
               <div class="col s12 m12">
@@ -148,20 +148,6 @@
         </div><!-- FIN container -->
     </main>
 
-
-<footer class="page-footer white">
-  <div class="container">
-    <div class="row">
-      
-    </div>
-  </div>
-  <div class="footer-copyright">
-    <div class="container black-text">
-    Made by 
-      <a class="black-text" href="http://materializecss.com">Materialize</a>
-    </div>
-  </div>
-</footer>
 
 </body>
 </html>

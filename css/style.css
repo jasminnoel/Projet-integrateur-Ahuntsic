@@ -10,6 +10,15 @@ body {
     min-height: 100vh;
     flex-direction: column;
 }
+.nav-wrapper{
+    padding-left:5%;
+    padding-right:5%;
+}
+.container{
+    padding-left:10px;
+    padding-right:10px;
+    margin-top:15px;
+}
 
 main {
     flex: 1 0 auto;
