@@ -70,6 +70,7 @@
 	session_start();
 	$_SESSION["Usr_ID"] = $ligne->Usr_ID;
 	$_SESSION["Usr_Email"] = $ligne->Usr_Email;
+	$_SESSION["Usr_Photo"] = $ligne->Usr_Photo;
     $tabRes['action']="connexOK";
     $tabRes['prenom']=$ligne->Usr_Prenom;
     $tabRes['ProfilUser']=$ligne;
