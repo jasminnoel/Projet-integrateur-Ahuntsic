@@ -27,6 +27,15 @@ try{
 	$tabRes['listeContri'][] = $ligne;
 
       }
+	  	  $reqEvent="SELECT * FROM sondages inner JOIN utilisateurs ON sondages.Usr_ID=utilisateurs.Usr_ID WHERE Event_ID=?";
+			$unModele=new filmsModele($reqEvent,array($Event_ID));
+			$stmt=$unModele->executer();
+	$tabRes['listeSondages']=array();
+			while($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
+
+	$tabRes['listeSondages'][] = $ligne;
+
+      }
 $tabRes['listeinvit'] = array();
 $reqEvent="SELECT invitations.Invit_Statut,utilisateurs.Usr_Photo,utilisateurs.Usr_Prenom FROM invitations inner JOIN utilisateurs ON invitations.Usr_ID=utilisateurs.Usr_ID WHERE invitations.Event_ID=?";
 			$unModele=new filmsModele($reqEvent,array($Event_ID));

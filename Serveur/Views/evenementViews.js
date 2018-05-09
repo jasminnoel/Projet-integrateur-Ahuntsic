@@ -149,6 +149,24 @@ rep += "                    <ul id=\"general\" class=\"collection\">\n";
 rep += "                        </li>\n";
 rep += "                    </ul>\n";
 rep += "            </div><!-- FIN Liste des contributions -->  \n";
+
+rep += "            <!-- Liste des sondages -->\n";
+
+rep += "              <div class=\"divider\"></div>\n";
+rep += "              <h5>Sondages</h5>\n";
+for (var i = 0; i < taille; i++) {
+    rep += "                        <div class=\"card collection\"> \n";
+    //   rep += "            <div class=\"row\">\n";
+    rep += "                            <a href=\"#\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"cont_nom\" name=\"cont_nom\">Choix no 1<span class=\"badge grey darken-2 white-text\">1</span></a>\n";
+    rep += "                             <a href=\"#\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"cont_nom\" name=\"cont_nom\">Choix no 2<span class=\"badge teal accent-3 white-text\">8</span></a>\n";
+    //    rep += "                            </div>\n";
+    rep += "                        </div>\n";
+}
+
+rep += "                        <div col s-12\" id=\"divAddContri\">\n";
+rep += "                           <a href=\"javascript:addSondage(" + objEve.Event_ID + ")\" class=\"waves-effect waves-light btn\"><i class=\"material-icons right\">add</i>Ajouter</a>\n";
+
+rep += "            </div><!-- FIN Liste des sondages -->  \n";
 rep += "          </div><!-- FIN colone droite -->\n";
 rep += "        </div><!-- FIN row -->\n";
     
