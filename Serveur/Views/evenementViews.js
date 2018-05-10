@@ -6,7 +6,9 @@ function affEvenement(reponse) {
     var tailleinvit = listeinvit.length;
     var listMessage = reponse.ListMessages;
     var tailleMessage = listMessage.length;
-	var objMeteo = reponse.jsonmeteo;
+    var objMeteo = reponse.jsonmeteo;
+    var listeSondages = reponse.listeSondages;
+    var tailleSondages = listeSondages.length;
 	var rep = "";
 	rep += "<div class=\"row\">\n";
 	rep += "                <!-- Nom de l'evenement -->\n";
@@ -154,18 +156,17 @@ rep += "            <!-- Liste des sondages -->\n";
 
 rep += "              <div class=\"divider\"></div>\n";
 rep += "              <h5>Sondages</h5>\n";
-for (var i = 0; i < taille; i++) {
-    rep += "                        <div class=\"card collection\"> \n";
-    //   rep += "            <div class=\"row\">\n";
-    rep += "                            <a href=\"#\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"cont_nom\" name=\"cont_nom\">Choix no 1<span class=\"badge grey darken-2 white-text\">1</span></a>\n";
-    rep += "                             <a href=\"#\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"cont_nom\" name=\"cont_nom\">Choix no 2<span class=\"badge teal accent-3 white-text\">8</span></a>\n";
-    //    rep += "                            </div>\n";
+for (var i = 0; i < tailleSondages; i++) {
+
+    rep += "                        <div id=\"" + listeSondages[i].Sond_ID + "\" class=\"card collection\"> \n";
+    rep += "                            <a href=\"#\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"sond1_nom\" name=\"sond1_nom\">" + listeSondages[i].Sondage_Option1_Nom + "<span id=\"sond1_badge\" class=\"badge teal white-text\">" + listeSondages[i].Sondage_Option1_NbVotes + "</span></a>\n";
+    rep += "                             <a href=\"#\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"sond2_nom\" name=\"sond2_nom\">" + listeSondages[i].Sondage_Option2_Nom + "<span id=\"sond2_badge\" class=\"badge teal white-text\">" + listeSondages[i].Sondage_Option2_NbVotes + "</span></a>\n";
     rep += "                        </div>\n";
 }
 
-rep += "                        <div col s-12\" id=\"divAddContri\">\n";
+rep += "                        <div col s12\" id=\"divAddSond\">\n";
 rep += "                           <a href=\"javascript:addSondage(" + objEve.Event_ID + ")\" class=\"waves-effect waves-light btn\"><i class=\"material-icons right\">add</i>Ajouter</a>\n";
-
+rep += "            </div>";
 rep += "            </div><!-- FIN Liste des sondages -->  \n";
 rep += "          </div><!-- FIN colone droite -->\n";
 rep += "        </div><!-- FIN row -->\n";
@@ -198,6 +199,14 @@ function appendContri(reponse) {
     rep += "                            </span>\n";
     rep += "                        </li>\n";
     $('#divAddContri').before(rep);
+}
+function affSondageView(reponse) {
+    var rep = "";
+    rep += "                        <div id=\"" + reponse.last_ID.Sond_ID + "\" class=\"card collection\"> \n";
+    rep += "                            <a href=\"#\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"sond1_nom\" name=\"sond1_nom\">" + reponse.option1 + "<span id=\"sond1_badge\" class=\"badge teal white-text\">" + listeSondages[i].Sondage_Option1_NbVotes + "</span></a>\n";
+    rep += "                             <a href=\"#\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"sond2_nom\" name=\"sond2_nom\">" + reponse.option2 + "<span id=\"sond2_badge\" class=\"badge teal white-text\">" + listeSondages[i].Sondage_Option2_NbVotes + "</span></a>\n";
+    rep += "                        </div>\n";
+    $('#divAddSond').before(rep);
 }
 function selectInvitView(reponse) {
     var listeMembres = reponse.listeMembres;
@@ -315,6 +324,9 @@ var evenementVue = function (reponse) {
             break;
         case "rejoindreEve":
             rejoindreEveView(reponse);
+            break;
+        case "affSondage":
+            affSondageView(reponse);
             break;
     }
 }

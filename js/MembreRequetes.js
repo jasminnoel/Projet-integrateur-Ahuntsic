@@ -250,6 +250,33 @@ function submitContri() {
         });
     }
 }
+function submitSond() {
+    if (document.getElementById('option1').value == "" || document.getElementById('option2').value == "") {
+        $('#option1').toggleClass('validate invalid');
+        $('#option2').toggleClass('validate invalid');
+        return false;
+    } else {
+        var formEvent = new FormData(document.getElementById('formAddSond'));
+        formEvent.append('action', 'ajouterSond');
+        $.ajax({
+            type: 'POST',
+            url: '../Serveur/Controller/EvenementController.php',
+            data: formEvent,
+            dataType: 'text', //text pour le voir en format de string
+            //async : false,
+            //cache : false,
+            contentType: false,
+            processData: false,
+            success: function (reponse) {//alert(reponse);
+                document.getElementById("formAddSond").reset();
+                evenementVue(reponse);
+            },
+            fail: function (err) {
+
+            }
+        });
+    }
+}
 
 function AddMessages(){
   var form_Message = new FormData(document.getElementById('form_Message'));

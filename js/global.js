@@ -33,6 +33,18 @@ function addContri(eveID) {
         }); // end of document ready
     })(jQuery); // end of jQuery name space
 }
+function addSondage(eveID) {
+    (function ($) {
+        $(function () {
+            var rep = "";
+            rep += "<form id=\"formAddSond\"><input id=\"eveID\" name=\"eveID\" type=\"number\" value=\"" + eveID + "\" style=\"display:none\">";
+            rep += "         <div class=\"input-field col s4\"><input placeholder=\"Option no1\" id=\"option1\" name =\"option1\" type=\"text\" class=\"validate\"></div>";
+            rep += "             <div class=\"input-field col s4\"><input placeholder=\"Option no2\" id=\"option2\"name =\"option2\"  type=\"text\" class=\"validate\"></div><br>";
+            rep += "             <a href=\"javascript:submitSond()\" class=\"waves-effect waves-light btn right col s\"><i class=\"material-icons right\">done</i>Valider</a></form>";
+            $('#divAddSond').html(rep);
+        }); // end of document ready
+    })(jQuery); // end of jQuery name space
+}
 /*function cacher(id) {
     var div = id;
     $(document).ready(function () {

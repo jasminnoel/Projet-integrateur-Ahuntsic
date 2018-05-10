@@ -34,7 +34,6 @@ try{
 			while($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
 
 	$tabRes['listeSondages'][] = $ligne;
-
       }
 $tabRes['listeinvit'] = array();
 $reqEvent="SELECT invitations.Invit_Statut,utilisateurs.Usr_Photo,utilisateurs.Usr_Prenom FROM invitations inner JOIN utilisateurs ON invitations.Usr_ID=utilisateurs.Usr_ID WHERE invitations.Event_ID=?";
@@ -121,6 +120,32 @@ function ajouterContri(){
 					}
 }
 
+function ajouterSond(){
+	global $tabRes;
+	session_start();
+	$Usr_ID = $_SESSION["Usr_ID"];
+	$Event_ID = $_POST["eveID"];
+	$option1 = $_POST["option1"];
+	$option2 = $_POST["option2"];
+	try{
+					$Query="INSERT INTO sondages VALUES(?,?,?,?,?,?,?)";
+					$unModele=new filmsModele($Query,array(0, $Usr_ID, $Event_ID, $option1, 0,$option2, 0));
+					$stmt=$unModele->executer();
+
+					$Query="SELECT MAX(Sond_ID) FROM sondages";
+					$unModele=new filmsModele($Query,array());
+					$stmt=$unModele->executer();
+					$ligne=$stmt->fetch(PDO::FETCH_OBJ);
+					$tabRes['last_id']=$ligne;
+					$tabRes['option1']=$option1;
+					$tabRes['option2']=$option2;
+					$tabRes['action']="affSondage";
+				}catch(Exception $e){
+					}finally{
+						unset($unModele);
+					}
+}
+
 function Add_Messages_Controller(){
 	global $tabRes;
 	session_start();
@@ -161,6 +186,9 @@ $tabRes['ListMessages'][] = $ligne;
 		break;
 		case "AjoutMessage" :
 			Add_Messages_Controller();
+		break;
+		case "ajouterSond" :
+			ajouterSond();
 		break;
 	}
     echo json_encode($tabRes);
