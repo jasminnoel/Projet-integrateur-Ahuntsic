@@ -392,3 +392,25 @@ function rejoindre(eve) {
         }
     });
 }
+//delete contribution
+function DelContri(DelContid) {
+    var DelContri = new FormData();
+    DelContri.append('action', 'DelContribution');//alert(form_membre.get("usr_dateN"));
+    DelContri.append('Cont_ID', DelContid);
+    $.ajax({
+        type: 'POST',
+        url: '../Serveur/Controller/EvenementController.php',
+        data: DelContri,
+        dataType: 'json', //text pour le voir en format de string
+        //async : false,
+        //cache : false,
+        contentType: false,
+        processData: false,
+        success: function (reponse) {//alert(reponse);
+            $("#"+reponse.Cont_ID+"").hide();
+        },
+        fail: function (err) {
+
+        }
+    });
+}
