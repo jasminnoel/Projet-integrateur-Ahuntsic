@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	require_once("../Models/modele.inc.php");
 	$tabRes=array();
 
@@ -105,8 +105,9 @@ function ajouterContri(){
 	$qteContri = $_POST["qteContri"];
 	$coutContri = $_POST["coutContri"];
 	$Usr_Photo = $_SESSION["Usr_Photo"];
+	$Cont_ID = $_SESSION["Cont_ID"];
 	try{
-					$Query="INSERT INTO contributions VALUES(?,?,?,?,?,?,?)";
+					$Query="INSERT INTO contributions VALUES(0,?,?,?,?,?,?,?)";
 					$unModele=new filmsModele($Query,array($Usr_ID, $Event_ID, 'general', $nomContri,$coutContri, null,$qteContri));
 					$stmt=$unModele->executer();
 					$tabRes['nomContri']=$nomContri;
@@ -114,6 +115,7 @@ function ajouterContri(){
 					$tabRes['coutContri']=$coutContri;
 					$tabRes['action']="addContri";
 					$tabRes['Usr_Photo']=$Usr_Photo;
+					$tabRes['Cont_ID'] = $Cont_ID;
 				}catch(Exception $e){
 					}finally{
 						unset($unModele);
@@ -171,6 +173,21 @@ $tabRes['ListMessages'][] = $ligne;
 }
 
 
+//Delete contributions
+function DelContribution(){
+	global $tabRes;
+	session_start();
+
+	$DelContid = $_POST['Cont_ID'];
+	$_SESSION["Cont_ID"] = $DelContid;
+	$Query="DELETE FROM contributions WHERE Cont_ID=?";
+	$unModele=new filmsModele($Query,array($DelContid));
+	$stmt=$unModele->executer();
+
+	$tabRes['Cont_ID'] = $DelContid;
+
+}
+
 		//******************************************************
 	//Controleur
 	$action=$_POST['action'];
@@ -189,6 +206,9 @@ $tabRes['ListMessages'][] = $ligne;
 		break;
 		case "ajouterSond" :
 			ajouterSond();
+		break;
+		case "DelContribution" :
+			DelContribution();
 		break;
 	}
     echo json_encode($tabRes);
