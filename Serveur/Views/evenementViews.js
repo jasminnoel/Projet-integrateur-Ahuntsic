@@ -130,7 +130,7 @@ rep += "              <h5>Contributions</h5>\n";
 rep += "              <!-- Item -->\n";
 rep += "                    <ul id=\"general\" class=\"collection\">\n";
     for (var i = 0; i < taille; i++) {
-        rep += "                        <li class=\"collection-item valign-wrapper\">\n";
+        rep += "                        <li id=\"" + listeContri[i].Cont_ID + "\" name=\"" + listeContri[i].Cont_ID + "\" class=\"collection-item valign-wrapper\">\n";
         rep += "                            <span class=\"title col s12 m6\">\n";
         rep += "                                <p id=\"cont_nom\" name=\"cont_nom\">" + listeContri[i].Cont_Nom + "</p>\n";
         rep += "                            </span>\n";
@@ -138,11 +138,12 @@ rep += "                    <ul id=\"general\" class=\"collection\">\n";
         rep += "                                <p id=\"cont_qte\" name=\"cont_qte\">Qté :" + listeContri[i].Cont_Qte + "</p>\n";
         rep += "                            </span>\n";
         rep += "                            <span class=\"col s12 m2\">\n";
-        rep += "                                <p id=\"cont_prix\" name=\"cont_prix\">Coût : " + listeContri[i].Cont_Prix + "</p>\n";
+        rep += "                                <p id=\"cont_prix\" name=\"cont_prix\">Coût : " + listeContri[i].Cont_Prix + "$</p>\n";
         rep += "                            </span>\n";
         rep += "                            <span class=\"secondary-content col s12 m2\">\n";
         rep += "                                <img id=\"usr_photo\" src=\"userphotos/"+ listeContri[i].Usr_Photo +"\" alt=\"\" class=\"circle icon-contribution\">\n";
         rep += "                            </span>\n";
+        rep += "                            <a href=\"javascript:DelContri(" + listeContri[i].Cont_ID + ")\" class=\"waves-effect waves-light btn right\"><i class=\"material-icons\">remove</i></a>";
         rep += "                        </li>\n";
     }
 
@@ -184,19 +185,20 @@ rep += "        </div><!-- FIN row -->\n";
 
 function appendContri(reponse) {
     var rep = "";
-    rep += "                        <li class=\"collection-item valign-wrapper\">\n";
+    rep += "                        <li id=\"" + reponse.Cont_ID + "\" name=\"" + reponse.Cont_ID + "\" class=\"collection-item valign-wrapper\">\n";
     rep += "                            <span class=\"title col s12 m6\">\n";
     rep += "                                <p id=\"cont_nom\" name=\"cont_nom\">" + reponse.nomContri + "</p>\n";
     rep += "                            </span>\n";
     rep += "                            <span class=\"col s12 m2\">\n";
-    rep += "                                <p id=\"cont_qte\" name=\"cont_qte\">" + reponse.qteContri + "</p>\n";
+    rep += "                                <p id=\"cont_qte\" name=\"cont_qte\">Qté :" + reponse.qteContri + "</p>\n";
     rep += "                            </span>\n";
     rep += "                            <span class=\"col s12 m2\">\n";
-    rep += "                                <p id=\"cont_prix\" name=\"cont_prix\">" + reponse.coutContri + "</p>\n";
+    rep += "                                <p id=\"cont_prix\" name=\"cont_prix\">Coût : " + reponse.coutContri + "$</p>\n";
     rep += "                            </span>\n";
     rep += "                            <span class=\"secondary-content col s12 m2\">\n";
      rep += "                                <img id=\"usr_photo\" src=\"userphotos/"+reponse.Usr_Photo+"\" alt=\"\" class=\"circle icon-contribution\">\n";
     rep += "                            </span>\n";
+    rep += "                            <a href=\"javascript:DelContri(" + reponse.Cont_ID + ")\" class=\"waves-effect waves-light btn right\"><i class=\"material-icons\">remove</i></a>";
     rep += "                        </li>\n";
     $('#divAddContri').before(rep);
 }
