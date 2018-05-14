@@ -49,8 +49,7 @@ function vueUser(reponse) {
         if (dateEv >= auj && statut=="par") {
             rep += "                          <a class=\"collection-item\" href=\"javascript:affEvenementreq(" + listeEvenement[i].Event_ID + ")\">\n";
         rep += "                              <span class=\"title\">" + listeEvenement[i].Event_Nom + "</span>\n";
-        rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">group</i>4</span>\n";
-        rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">email</i>4</span>\n";
+        rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">event</i></span>\n";
         rep += "                              <br /><span>" + listeEvenement[i].Event_Date_Debut + "</span>\n";
         rep += "                          </a>\n";
         }
@@ -67,8 +66,7 @@ function vueUser(reponse) {
         if (dateEv < auj && statut == "par") {
             rep += "                          <a class=\"collection-item\" href=\"#\">\n";
             rep += "                              <span class=\"title\">" + listeEvenement[i].Event_Nom + "</span>\n";
-            rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">group</i>4</span>\n";
-            rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">email</i>4</span>\n";
+            rep += "                              <span class=\"secondary-content valign-wrapper\"><i class=\"material-icons\">event</i></span>\n";
             rep += "                              <br /><span>" + listeEvenement[i].Event_Date_Debut + "</span>\n";
             rep += "                          </a>\n";
         }
