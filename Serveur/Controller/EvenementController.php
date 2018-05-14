@@ -105,7 +105,7 @@ function ajouterContri(){
 	$qteContri = $_POST["qteContri"];
 	$coutContri = $_POST["coutContri"];
 	$Usr_Photo = $_SESSION["Usr_Photo"];
-	$Cont_ID = $_SESSION["Cont_ID"];
+	//$Cont_ID = $_SESSION["Cont_ID"];
 	try{
 					$Query="INSERT INTO contributions VALUES(0,?,?,?,?,?,?,?)";
 					$unModele=new filmsModele($Query,array($Usr_ID, $Event_ID, 'general', $nomContri,$coutContri, null,$qteContri));
@@ -115,7 +115,7 @@ function ajouterContri(){
 					$tabRes['coutContri']=$coutContri;
 					$tabRes['action']="addContri";
 					$tabRes['Usr_Photo']=$Usr_Photo;
-					$tabRes['Cont_ID'] = $Cont_ID;
+					//$tabRes['Cont_ID'] = $Cont_ID;
 				}catch(Exception $e){
 					}finally{
 						unset($unModele);
