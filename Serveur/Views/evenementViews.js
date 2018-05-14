@@ -204,10 +204,11 @@ function appendContri(reponse) {
 }
 function affSondageView(reponse) {
     var rep = "";
-    rep += "                        <div id=\"" + reponse.last_ID.Sond_ID + "\" class=\"card collection\"> \n";
-    rep += "                            <a href=\"#\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"sond1_nom\" name=\"sond1_nom\">" + reponse.option1 + "<span id=\"sond1_badge\" class=\"badge teal white-text\">" + listeSondages[i].Sondage_Option1_NbVotes + "</span></a>\n";
-    rep += "                             <a href=\"#\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"sond2_nom\" name=\"sond2_nom\">" + reponse.option2 + "<span id=\"sond2_badge\" class=\"badge teal white-text\">" + listeSondages[i].Sondage_Option2_NbVotes + "</span></a>\n";
+    rep += "                        <div id=\"" + reponse.last_id + "\" class=\"card collection\"> \n";
+    rep += "                            <a href=\"#\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"sond1_nom\" name=\"sond1_nom\">" + reponse.option1 + "<span id=\"sond1_badge\" class=\"badge teal white-text\">0</span></a>\n";
+    rep += "                             <a href=\"#\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"sond2_nom\" name=\"sond2_nom\">" + reponse.option2 + "<span id=\"sond2_badge\" class=\"badge teal white-text\">0</span></a>\n";
     rep += "                        </div>\n";
+	//window.alert(rep);
     $('#divAddSond').before(rep);
 }
 function selectInvitView(reponse) {

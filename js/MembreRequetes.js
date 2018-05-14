@@ -262,13 +262,13 @@ function submitSond() {
             type: 'POST',
             url: '../Serveur/Controller/EvenementController.php',
             data: formEvent,
-            dataType: 'text', //text pour le voir en format de string
+            dataType: 'json', //text pour le voir en format de string
             //async : false,
             //cache : false,
             contentType: false,
             processData: false,
             success: function (reponse) {//alert(reponse);
-                document.getElementById("formAddSond").reset();
+               document.getElementById("formAddSond").reset();
                 evenementVue(reponse);
             },
             fail: function (err) {

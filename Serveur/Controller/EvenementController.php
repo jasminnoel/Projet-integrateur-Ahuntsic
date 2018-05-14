@@ -134,11 +134,12 @@ function ajouterSond(){
 					$unModele=new filmsModele($Query,array(0, $Usr_ID, $Event_ID, $option1, 0,$option2, 0));
 					$stmt=$unModele->executer();
 
-					$Query="SELECT MAX(Sond_ID) FROM sondages";
+					$Query="SELECT MAX(Sond_ID) as ID FROM sondages";
 					$unModele=new filmsModele($Query,array());
 					$stmt=$unModele->executer();
 					$ligne=$stmt->fetch(PDO::FETCH_OBJ);
-					$tabRes['last_id']=$ligne;
+					
+					$tabRes['last_id']=$ligne->ID;
 					$tabRes['option1']=$option1;
 					$tabRes['option2']=$option2;
 					$tabRes['action']="affSondage";
