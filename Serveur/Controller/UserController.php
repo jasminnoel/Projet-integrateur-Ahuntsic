@@ -24,6 +24,15 @@
 					$unModele=new filmsModele($Query,array($Event_Nom, $Event_Date_Debut, $Event_Lieu, null,$Event_Desc, $Event_Time,$Usr_ID));
 					$stmt=$unModele->executer();
 
+										$Query="SELECT MAX(Event_ID) as ID FROM evenements";
+					$unModele=new filmsModele($Query,array());
+					$stmt=$unModele->executer();
+					$ligne=$stmt->fetch(PDO::FETCH_OBJ);
+					$Event_ID=$ligne->ID;
+					$reqInvit="INSERT INTO invitations VALUES(?,?,?)";
+			$unModele=new filmsModele($reqInvit,array($Usr_ID, $Event_ID, 'par'));
+			$stmt=$unModele->executer();
+
 					$tabRes['action']="enregistrer";
 					$tabRes['msg']="Evenement bien enregistre";
 				}catch(Exception $e){
