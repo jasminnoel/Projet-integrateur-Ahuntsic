@@ -209,7 +209,7 @@ rep += " <div id=\"modal2\" class=\"modal\">";
 
     var repMenu = "";
     repMenu += "<li><a class=\"waves-effect waves-light btn modal-trigger\" href=\"#modal1\"><i class=\"material-icons right\">add</i>Créer événement</a></li>\n";
-    repMenu += "                  <li><a href=\"#\"><i class=\"material-icons teal-text\">event</i></a></li>\n";
+    repMenu += "                  <li><a href=\"#\"><i class=\"waves-effect waves-light teal-text modal-trigger material-icons\" href=\"#modalInvit\">event</i></a></li>\n";
     repMenu += "                  <li><a class=\"dropdown-button\" data-activates=\"dropdown1\" data-target=\"dropdown1\" href=\"#\"><i class=\"material-icons teal-text\">person_pin</i></a>\n";
 	
    repMenu += "<ul id='dropdown1' class='dropdown-content'>";
