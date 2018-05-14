@@ -224,7 +224,7 @@ rep += " <div id=\"modal2\" class=\"modal\">";
             repInvit += "                        <li class=\"collection-item avatar\">\n";
             repInvit += "                            <span class=\"title\">" + listeEvenement[i].Event_Nom + "</span>\n";
             repInvit += "                              <p>  Date : " + listeEvenement[i].Event_Date_Debut + "</p>\n";
-            repInvit += "                            <a href=\"javascript:rejoindre(" + listeEvenement[i].Event_ID + ");\" class=\"secondary-content btn\"><i class=\"material-icons right\">check</i>Rejoindre</a>\n";
+            repInvit += "                            <a href=\"javascript:rejoindre(" + listeEvenement[i].Event_ID + ");\" class=\"secondary-content btn modal-close\"><i class=\"material-icons right\">check</i>Rejoindre</a>\n";
             repInvit += "                        </li>\n";
         }
     }
