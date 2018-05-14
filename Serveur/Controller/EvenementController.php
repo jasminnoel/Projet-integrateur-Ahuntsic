@@ -188,6 +188,40 @@ function DelContribution(){
 	$tabRes['Cont_ID'] = $DelContid;
 
 }
+//ajouter votes
+function ajouterVote(){
+	global $tabRes;
+	$no_option = $_POST['no_option'];
+	$Sond_ID = $_POST['Sond_ID'];
+	if($no_option == 1){
+		$Query="UPDATE sondages SET Sondage_Option1_NbVotes = Sondage_Option1_NbVotes +1 WHERE Sond_ID=?";
+	$unModele=new filmsModele($Query,array($Sond_ID));
+	$stmt=$unModele->executer();
+	
+	$Query="SELECT `Sondage_Option1_NbVotes` FROM sondages WHERE Sond_ID=?";
+	$unModele=new filmsModele($Query,array($Sond_ID));
+	$stmt=$unModele->executer();
+	$ligne=$stmt->fetch(PDO::FETCH_OBJ);
+	$tabRes['Sond_ID'] = $Sond_ID;
+	$tabRes['nb_votes'] = $ligne->Sondage_Option1_NbVotes;
+	$tabRes['no_option'] = $no_option;
+	}
+	
+	if($no_option == 2){
+		$Query="UPDATE sondages SET Sondage_Option2_NbVotes = Sondage_Option2_NbVotes +1 WHERE Sond_ID=?";
+	$unModele=new filmsModele($Query,array($Sond_ID));
+	$stmt=$unModele->executer();
+	
+	$Query="SELECT `Sondage_Option2_NbVotes` FROM sondages WHERE Sond_ID=?";
+	$unModele=new filmsModele($Query,array($Sond_ID));
+	$stmt=$unModele->executer();
+	$ligne=$stmt->fetch(PDO::FETCH_OBJ);
+	$tabRes['Sond_ID'] = $Sond_ID;
+	$tabRes['nb_votes'] = $ligne->Sondage_Option2_NbVotes;
+	$tabRes['no_option'] = $no_option;
+	}
+	$tabRes['action'] = "affVotes";
+}
 
 		//******************************************************
 	//Controleur
@@ -210,6 +244,9 @@ function DelContribution(){
 		break;
 		case "DelContribution" :
 			DelContribution();
+		break;
+		case "ajouterVote" :
+			ajouterVote();
 		break;
 	}
     echo json_encode($tabRes);

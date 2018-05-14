@@ -414,3 +414,25 @@ function DelContri(DelContid) {
         }
     });
 }
+function voter(no_option,sond){
+	    var voterForm = new FormData();
+    voterForm.append('action', 'ajouterVote');//alert(form_membre.get("usr_dateN"));
+    voterForm.append('Sond_ID', sond);
+	voterForm.append('no_option', no_option);
+    $.ajax({
+        type: 'POST',
+        url: '../Serveur/Controller/EvenementController.php',
+        data: voterForm,
+        dataType: 'json', //text pour le voir en format de string
+        //async : false,
+        //cache : false,
+        contentType: false,
+        processData: false,
+        success: function (reponse) {//alert(reponse);
+            evenementVue(reponse);
+        },
+        fail: function (err) {
+
+        }
+    });
+}

@@ -28,7 +28,7 @@ rep += "                <p id=\"event_heure\" name=\"event_heure\">Heure : "+ ob
         var auj = new Date();
 		var dateEve = new Date(objEve.Event_Date_Debut);
 		var diff = dateEve.getDate() - auj.getDate();
-
+//meteo
 if(diff<=5){
 
 	var listePrevisions = objMeteo.list;
@@ -38,6 +38,7 @@ if(diff<=5){
 	rep += "                <div>\n";
 	rep += "                  <b>Meteo Prevue le</b> " + dateEve.getDate() + "-" + dateEve.getMonth() + "-" + dateEve.getFullYear() + "<br>\n";
 	//window.alert("liste prevision = " + JSON.stringify(listePrevisions));
+	//météo
 		for(i=0; i<taillePrevisions; i++){
 		dateMeteo = new Date(listePrevisions[i].dt_txt);
 		if(dateMeteo.getDate()==dateEve.getDate()){
@@ -64,6 +65,7 @@ rep += "                <span class=\"card-title\">Messages</span>\n";
 rep += "                <!-- Liste des messages -->\n";
 rep += "                <ul style=\"overflow-y: scroll;height:350px;\" class=\"collection\">\n";
 rep += "                  <!-- Message d'un invité -->\n";
+//liste des messages
 
                           for(i=0; i<tailleMessage; i++){
 
@@ -88,6 +90,7 @@ rep += "            <div class=\"row\">\n";
 rep += "              <h5>Invités</h5>\n";
 rep += "              <ul id=\"divInvit\" class=\"col s-9 valign-wrapper\">\n";
 rep += "                <!-- Invité et participant -->\n";
+//liste des invités
     for (var i = 0; i < tailleinvit; i++) {
         if (listeinvit[i].Invit_Statut == "par") {
             if (listeinvit[i].Usr_Photo != "") {
@@ -129,6 +132,7 @@ rep += "              <div class=\"divider\"></div>\n";
 rep += "              <h5>Contributions</h5>\n";
 rep += "              <!-- Item -->\n";
 rep += "                    <ul id=\"general\" class=\"collection\">\n";
+//liste des contributions
     for (var i = 0; i < taille; i++) {
         rep += "                        <li id=\"" + listeContri[i].Cont_ID + "\" name=\"" + listeContri[i].Cont_ID + "\" class=\"collection-item valign-wrapper\">\n";
         rep += "                            <span class=\"title col s12 m6\">\n";
@@ -157,11 +161,12 @@ rep += "            <!-- Liste des sondages -->\n";
 
 rep += "              <div class=\"divider\"></div>\n";
 rep += "              <h5>Sondages</h5>\n";
+// liste des sondages
 for (var i = 0; i < tailleSondages; i++) {
 
     rep += "                        <div id=\"" + listeSondages[i].Sond_ID + "\" class=\"card collection\"> \n";
-    rep += "                            <a href=\"#\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"sond1_nom\" name=\"sond1_nom\">" + listeSondages[i].Sondage_Option1_Nom + "<span id=\"sond1_badge\" class=\"badge teal white-text\">" + listeSondages[i].Sondage_Option1_NbVotes + "</span></a>\n";
-    rep += "                             <a href=\"#\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"sond2_nom\" name=\"sond2_nom\">" + listeSondages[i].Sondage_Option2_Nom + "<span id=\"sond2_badge\" class=\"badge teal white-text\">" + listeSondages[i].Sondage_Option2_NbVotes + "</span></a>\n";
+    rep += "                            <a href=\"javascript:voter(1," + listeSondages[i].Sond_ID + ")\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"sond1_nom\" name=\"sond1_nom\">" + listeSondages[i].Sondage_Option1_Nom + "<span id=\"option1" + listeSondages[i].Sond_ID + "\" class=\"badge teal white-text sond1_badge\">" + listeSondages[i].Sondage_Option1_NbVotes + "</span></a>\n";
+    rep += "                             <a href=\"javascript:voter(2," + listeSondages[i].Sond_ID + ")\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"sond2_nom\" name=\"sond2_nom\">" + listeSondages[i].Sondage_Option2_Nom + "<span id=\"option2" + listeSondages[i].Sond_ID + "\" class=\"badge teal white-text sond2_badge\">" + listeSondages[i].Sondage_Option2_NbVotes + "</span></a>\n";
     rep += "                        </div>\n";
 }
 
@@ -182,7 +187,7 @@ rep += "        </div><!-- FIN row -->\n";
     $('#container').html(rep);
     $('#menu-droite').html(repMenu);
 }
-
+//ajout d'une contribution
 function appendContri(reponse) {
     var rep = "";
     rep += "                        <li id=\"" + reponse.Cont_ID + "\" name=\"" + reponse.Cont_ID + "\" class=\"collection-item valign-wrapper\">\n";
@@ -202,11 +207,12 @@ function appendContri(reponse) {
     rep += "                        </li>\n";
     $('#divAddContri').before(rep);
 }
+//ajout d'un sondage
 function affSondageView(reponse) {
     var rep = "";
     rep += "                        <div id=\"" + reponse.last_id + "\" class=\"card collection\"> \n";
-    rep += "                            <a href=\"#\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"sond1_nom\" name=\"sond1_nom\">" + reponse.option1 + "<span id=\"sond1_badge\" class=\"badge teal white-text\">0</span></a>\n";
-    rep += "                             <a href=\"#\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"sond2_nom\" name=\"sond2_nom\">" + reponse.option2 + "<span id=\"sond2_badge\" class=\"badge teal white-text\">0</span></a>\n";
+    rep += "                            <a href=\"javascript:voter(1," + reponse.last_id + ")\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"sond1_nom\" name=\"sond1_nom\">" + reponse.option1 + "<span id=\"option1" + reponse.last_id + "\" class=\"badge teal white-text sond1_badge\">0</span></a>\n";
+    rep += "                             <a href=\"javascript:voter(2," + reponse.last_id + ")\" class=\"col s6 collection-item center-align flow-text card-action\" id=\"sond2_nom\" name=\"sond2_nom\">" + reponse.option2 + "<span id=\"option1" + reponse.last_id + "\" class=\"badge teal white-text sond2_badge\">0</span></a>\n";
     rep += "                        </div>\n";
 	//window.alert(rep);
     $('#divAddSond').before(rep);
@@ -303,7 +309,35 @@ function rejoindreEveView(reponse) {
     $('#listeEvePar').append(rep);
 }
 
-
+function affVotesView(reponse){
+	var nbVotes = reponse.nb_votes;
+	var no_option = reponse.no_option;
+	var sond_id = reponse.Sond_ID;
+	//alert(JSON.stringify(reponse));
+	
+	if (no_option==1){
+		//alert(no_option);
+		//$(document).ready(function () {
+		//$('#option1'+sond_id).text(nbVotes);
+		//});
+		var divOK = "#option1"+sond_id;
+		var divNON = "#option2"+sond_id;
+	} else {
+		//alert(no_option);
+		//$(document).ready(function () {
+		//$('#option2'+sond_id).text(nbVotes);
+		//});
+		var divOK = "#option2"+sond_id;
+		var divNON = "#option1"+sond_id;
+	}
+	//$(document).ready(function () {
+	$(divOK).parent().attr("href", "#");
+	$(divOK).parent().addClass("teal accent-1");
+	$(divOK).html(nbVotes);
+	$(divNON).parent().attr("href", "#");
+	$(divNON).parent().addClass("grey lighten-3");
+	//});
+}
 
 
 var evenementVue = function (reponse) {
@@ -330,6 +364,9 @@ var evenementVue = function (reponse) {
             break;
         case "affSondage":
             affSondageView(reponse);
+            break;
+		case "affVotes":
+            affVotesView(reponse);
             break;
     }
 }
