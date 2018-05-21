@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>iPotLock</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+</head>
+
+<body>
+  <main>
+    <nav class="#ffffff white" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo black-text">iPotLock</a>
+
+        <ul id="nav-mobile" class="sidenav">
+          <li>
+            <a href="#" class="black-text">Navbar Link</a>
+          </li>
+        </ul>
+
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger black-text">
+          <i class="material-icons">menu</i>
+        </a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="section">
+
+        <div class="row">
+
+          <!-- colone gauche -->
+          <div id="col-gauche" class="col s12 m4">
+            <!-- Carte - Description de l'événement -->
+            <div class="card #fafafa grey lighten-5">
+              <div class="card-content black-text">
+                <!-- Nom de l'evenement -->
+                <span id="event_nom" name="event_nom" class="card-title">Nom de l'evenement</span>
+                <!-- Date de l'evenement -->
+                <p id="event_date" name="event_date">Date</p>
+                <!-- Heure de l'evenement -->
+                <p id="event_heure" name="event_heure">Heure debut</p>
+                <!-- Meteo Prevision en lien avec la date et le lieu de l'evenement -->
+                <div>
+                  Meteo Prevue
+                  <pre class="grey">API Meteo
+
+                  </pre>
+                </div>
+                <!-- Lieu de l'evenement - coordonées google map -->
+                <div id="event_lieu" name="event_lieu">
+                  Lieu
+                  <pre class="grey">API Google Map
+
+
+                  </pre>
+                </div>
+              </div>
+            </div><!-- FIN Carte - Description de l'événement -->
+
+            <!-- Carte - Messagerie -->
+            <div class="card #b2dfdb teal lighten-4">
+              <div class="card-content black-text">
+                <span class="card-title">Messages</span>
+                <!-- Liste des messages -->
+                <ul class="collection">
+                  <!-- Message d'un invité -->
+                  <li class="collection-item avatar">
+                    <img src="images/user-labrune.jpg" alt="" class="circle">
+                    <span id="mess_date" class="title">5:30 PM</span>
+                    <p id="mess_contenu">Ton événement c'est de la marde!</p>
+                  </li>
+                  <li class="collection-item avatar">
+                    <img src="images/user-lablonde.jpg" alt="" class="circle">
+                    <span id="mess_date" class="title">10:15 AM</span>
+                    <p id="mess_contenu">J'ai hate a demain, ca va etre foue</p>
+                  </li>
+                  <li class="collection-item avatar">
+                    <img src="images/user-larousse.jpg" alt="" class="circle">
+                    <span id="mess_date" class="title">Hier, 9:45 PM</span>
+                    <p id="mess_contenu">C'est quoi comme picnic... j'apporte quoi</p>
+                  </li>
+                </ul>
+              </div>
+            </div><!-- FIN Carte - Messagerie -->
+          </div><!-- FIN colone gauche -->
+
+          <!-- colone droite -->
+          <div id="col-droite" class="col s12 m8">
+            <!-- Liste des invités a l'événement -->
+            <div>
+              <h6>Invités</h6>
+              <ul class="valign-wrapper">
+                <!-- Invité et participant -->
+                <li id="usr_id" name="usr_id" class="inline space-5">
+                  <div class="circle icon-invite border-success valign-wrapper inline center"><h5>J</h5></div>
+                </li>
+                <li id="usr_id" name="usr_id" class="inline space-5">
+                  <img id="usr_photo" src="images/user-lablonde.jpg" alt="" class="circle icon-invite border-success">
+                </li>
+                <li id="usr_id" name="usr_id" class="inline space-5">
+                  <img id="usr_photo" src="images/user-larousse.jpg" alt="" class="circle icon-invite border-success">
+                </li>
+                <li id="usr_id" name="usr_id" class="inline space-5">
+                  <img id="usr_photo" src="images/user-labrune.jpg" alt="" class="circle icon-invite border-success">
+                </li>
+                <!-- Juste Invité -->
+                <li id="usr_id" name="usr_id" class="inline space-5">
+                  <img id="usr_photo" src="images/user-lablonde.jpg" alt="" class="circle icon-invite">
+                </li>
+                <li id="usr_id" name="usr_id" class="inline space-5">
+                  <img id="usr_photo" src="images/user-larousse.jpg" alt="" class="circle icon-invite">
+                </li>
+              </ul>
+            </div><!-- FIN Liste des invités -->
+
+              <div class="row">
+                  <div class="divider"></div>
+                  <h5>Sondages</h5>
+                  <!-- Item -->
+                  <div class="card collection space-5">    
+                          <a href="#" class="col s6 collection-item center-align card-action" id="cont_nom" name="cont_nom">Choix no 1<span class="badge grey darken-2 white-text">1</span></a>
+                          <a href="#" class="col s6 collection-item center-align card-action" id="cont_nom" name="cont_nom">Choix no 2<span class="badge teal accent-3 white-text">10</span></a>
+              </div>                      
+              </div><!-- FIN Liste des sondages -->
+
+                  </div><!-- FIN colone droite -->
+
+              </div><!-- FIN row -->
+
+      </div><!-- FIN section -->
+
+    </div><!-- FIN container -->
+</main>
+
+
+<footer class="page-footer white">
+  <div class="container">
+    <div class="row">
+      
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container black-text">
+    Made by 
+      <a class="black-text" href="http://materializecss.com">Materialize</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

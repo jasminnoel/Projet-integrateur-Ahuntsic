@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>iPotLock</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+</head>
+
+<body>
+  <main>
+      <nav class="#ffffff white" role="navigation">
+          <div class="nav-wrapper">
+              <a id="logo-container" href="#" class="brand-logo black-text">iPotLock</a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+              <ul class="right hide-on-med-and-down" id="menu-droite">
+                  <li><a class="waves-effect waves-light btn"><i class="material-icons right">add</i>Créer événement</a></li>
+                  <li><a href="#"><i class="material-icons teal-text">event</i></a></li>
+                  <li><a href="#"><i class="material-icons teal-text">person_pin</i></a></li>
+              </ul>
+          </div>
+      </nav>
+
+      <div class="container">
+          <div class="row">
+              <h2>Bienvenue User!</h2>
+    </div>
+          <div class="row">
+
+              <div id="col-gauche" class="col s12 m8">
+                  <!-- Carte - Notification -->
+                  <div class="row">
+                      <div class="card grey lighten-3">
+                          <div class="card-content valign-wrapper">
+                              <div class="col m1 valign-wrapper hide-on-med-and-down">
+                                  <i class="material-icons grey-text lighten-3">perm_contact_calendar</i>
+                              </div>
+                              <div class="col s12 m8">
+                                  <span class="">Vous avez 4 nouvelles invitations. Confirmez votre présence dès maintenant!</span>
+                              </div>
+                              <div class="col s12 m3">
+                                  <div class="right">
+                                      <a class="waves-effect waves-light btn teal white-text">Voir</a>
+                                      <a class="waves-effect waves-light btn-flat"><i class="material-icons">clear</i></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Carte - Messagerie -->
+                  <div class="row">
+                      <h5>Événements à venir</h5>
+                      <div class="collection">
+                          <a class="collection-item" href="#">
+                              <span class="title">Camping en Gaspésie</span>
+                              <span class="secondary-content valign-wrapper"><i class="material-icons">group</i>4</span>
+                              <span class="secondary-content valign-wrapper"><i class="material-icons">email</i>4</span>
+                              <br /><span>02/05/2018</span>
+                          </a>
+                          <a class="collection-item" href="#">
+                              <span class="title">Camping en Gaspésie</span>
+                              <span class="secondary-content valign-wrapper"><i class="material-icons">group</i>4</span>
+                              <span class="secondary-content valign-wrapper"><i class="material-icons">email</i>4</span>
+                              <br /><span>02/05/2018</span>
+                          </a>
+                          <a class="collection-item" href="#">
+                              <span class="title">Camping en Gaspésie</span>
+                              <span class="secondary-content valign-wrapper"><i class="material-icons">group</i>4</span>
+                              <span class="secondary-content valign-wrapper"><i class="material-icons">email</i>4</span>
+                              <br /><span>02/05/2018</span>
+                          </a>
+                          <a class="collection-item" href="#">
+                              <span class="title">Camping en Gaspésie</span>
+                              <span class="secondary-content valign-wrapper"><i class="material-icons">group</i>4</span>
+                              <span class="secondary-content valign-wrapper"><i class="material-icons">email</i>4</span>
+                              <br /><span>02/05/2018</span>
+                          </a>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <h5>Événements archivés</h5>
+                      <div class="collection">
+                          <a class="collection-item" href="#">
+                              <span class="title">Camping en Gaspésie</span>
+                              <span class="secondary-content valign-wrapper"><i class="material-icons">group</i>4</span>
+                              <span class="secondary-content valign-wrapper"><i class="material-icons">email</i>4</span>
+                              <br /><span>02/05/2018</span>
+                          </a>
+                          <a class="collection-item" href="#">
+                              <span class="title">Camping en Gaspésie</span>
+                              <span class="secondary-content valign-wrapper"><i class="material-icons">group</i>4</span>
+                              <span class="secondary-content valign-wrapper"><i class="material-icons">email</i>4</span>
+                              <br /><span>02/05/2018</span>
+                          </a>
+                          <a class="collection-item" href="#">
+                              <span class="title">Camping en Gaspésie</span>
+                              <span class="secondary-content valign-wrapper"><i class="material-icons">group</i>4</span>
+                              <span class="secondary-content valign-wrapper"><i class="material-icons">email</i>4</span>
+                              <br /><span>02/05/2018</span>
+                          </a>
+                      </div>
+                  </div>
+              </div><!-- FIN colonne -->
+
+              <div id="col-droite" class="col s12 m4">
+                  <!-- Carte - Créer evenement -->
+                  <div class="card teal right">
+                      <div class="card-content">
+                          <p class="flow-text white-text center-align">Créez votre propre événement!</p>
+                      </div>
+                      <div class="card-action">
+                          <a class="btn-floating halfway-fab waves-effect waves-light red btn-large"><i class="material-icons">add</i></a>
+                      </div>
+
+                  </div>
+              </div>
+          </div><!-- FIN row -->
+
+
+                </div><!-- FIN container -->
+</main>
+
+
+<footer class="page-footer white">
+  <div class="container">
+    <div class="row">
+      
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container black-text">
+    Made by 
+      <a class="black-text" href="http://materializecss.com">Materialize</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
