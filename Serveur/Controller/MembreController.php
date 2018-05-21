@@ -72,6 +72,7 @@
 	$_SESSION["Usr_Email"] = $ligne->Usr_Email;
 	$_SESSION["Usr_Photo"] = $ligne->Usr_Photo;
     $tabRes['action']="connexOK";
+
     $tabRes['prenom']=$ligne->Usr_Prenom;
     $tabRes['ProfilUser']=$ligne;
 //collecte les événements en cours de l'utilisateur 
@@ -82,9 +83,8 @@
 			 while($ligne=$stmt->fetch(PDO::FETCH_OBJ)){
 			    $tabRes['listeEve'][]=$ligne;
 			}
-
-
     } else {
+
             
 	$tabRes['action']="connexBloque";
 	$tabRes['msg']="Mauvais courriel ou mot de passe";
